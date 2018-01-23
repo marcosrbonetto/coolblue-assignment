@@ -21,6 +21,6 @@ public class FindingApiClientImpl {
 
     public void getProducts() {
         findingApiClient.getProductsByFilter("EBAY-US", APP_ID, "1.13.0", "findItemsByKeywords",
-                "XML", "harry potter".replace("+", "%20")).enqueue(new ProductCallback(new GetProductsResponseEvent()));
+                "XML", "harry potter".replace("+", "%20"), 50).enqueue(new ProductCallback(new GetProductsResponseEvent()));
     }
 }

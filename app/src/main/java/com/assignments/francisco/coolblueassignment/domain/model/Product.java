@@ -40,9 +40,9 @@ public class Product {
 
         public Builder(Item item) {
 
-            this.title = item.title;
+            this.title = item.getTitle();
 
-            this.imageUrl = item.galleryURL;
+            this.imageUrl = item.getGalleryURL();
 
 //            this.price = String.format(PRICE_FORMAT, item.getSellingStatus().getCurrentPrice().getCurrencyId(),
 //                    item.getSellingStatus().getCurrentPrice().getContent());

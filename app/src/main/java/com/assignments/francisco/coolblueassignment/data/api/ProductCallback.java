@@ -25,9 +25,11 @@ public final class ProductCallback implements Callback {
     @Override
     public void onResponse(Call call, Response response) {
         List<Product> productList = ProductEntityDataMapper.transformProductEntities((FindItemsByKeywordsResponse) response.body());
+        System.out.println("fdafs");
     }
 
     @Override
     public void onFailure(Call call, Throwable t) {
+        System.out.println("fdafs");
     }
 }

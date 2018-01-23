@@ -16,5 +16,5 @@ public interface FindingApiClient {
     Call<FindItemsByKeywordsResponse> getProductsByFilter(@Query("GLOBAL-ID") String globalId,
             @Query("SECURITY-APPNAME") String appId, @Query("SERVICE-VERSION") String version,
             @Query("OPERATION-NAME") String operationName, @Query("RESPONSE-DATA-FORMAT") String dataFormat,
-            @Query("keywords") String keywords);
+            @Query("keywords") String keywords, @Query("paginationInput.entriesPerPage") int entries);
 }

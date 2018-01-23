@@ -5,6 +5,7 @@ import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,8 +14,8 @@ import java.util.List;
 @Element(name = "searchResult")
 public class SearchResult {
 
-    @Attribute(name = "count")
+    @Attribute(name = "count", required = false)
     public String count;
-    @ElementList(name = "item", inline = true)
-    public List<Item> item;
+    @ElementList(entry = "item", required = false, inline = true)
+    public ArrayList<Item> item;
 }
