@@ -7,7 +7,7 @@ import org.simpleframework.xml.Root;
  * Created by fran on 23/01/18.
  */
 
-@Element(name = "discountPriceInfo")
+@Root(name = "discountPriceInfo", strict = false)
 public class DiscountPriceInfo {
 
     @Element(name = "pricingTreatment", required = false)

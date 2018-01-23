@@ -7,7 +7,7 @@ import org.simpleframework.xml.Root;
 /**
  * Created by fran on 23/01/18.
  */
-@Element(name = "productId")
+@Root(name = "productId", strict = false)
 public class ProductId {
 
     @Element(name = "content", required = false)

@@ -6,7 +6,7 @@ import org.simpleframework.xml.Root;
 /**
  * Created by fran on 23/01/18.
  */
-@Root(name = "findItemsByKeywordsResponse")
+@Root(name = "findItemsByKeywordsResponse", strict = false)
 public class FindItemsByKeywordsResponse {
 
     @Element(name = "timestamp", required = false)

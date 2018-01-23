@@ -6,7 +6,7 @@ import org.simpleframework.xml.Root;
 /**
  * Created by fran on 23/01/18.
  */
-@Element(name = "sellingStatus")
+@Root(name = "sellingStatus", strict = false)
 public class SellingStatus {
 
     @Element(name = "convertedCurrentPrice", required = false)

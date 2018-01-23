@@ -6,7 +6,7 @@ import org.simpleframework.xml.Root;
 /**
  * Created by fran on 23/01/18.
  */
-@Element(name = "primaryCategory")
+@Root(name = "primaryCategory", strict = false)
 public class PrimaryCategory {
 
     @Element(name = "categoryName", required = false)

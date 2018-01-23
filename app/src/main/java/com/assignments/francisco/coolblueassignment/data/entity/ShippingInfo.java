@@ -6,7 +6,7 @@ import org.simpleframework.xml.Root;
 /**
  * Created by fran on 23/01/18.
  */
-@Element(name = "shippingInfo")
+@Root(name = "shippingInfo", strict = false)
 public class ShippingInfo {
 
     @Element(name = "shippingType", required = false)

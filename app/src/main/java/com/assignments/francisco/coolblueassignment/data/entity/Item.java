@@ -13,7 +13,7 @@ import java.util.List;
  * Created by fran on 23/01/18.
  */
 
-@Root
+@Root(strict=false)
 public class Item {
 
     @Element(name = "listingInfo", required = false)
@@ -60,8 +60,6 @@ public class Item {
     private DiscountPriceInfo discountPriceInfo;
     @Element(required = false)
     private String isMultiVariationListing;
-    @Element(required = false)
-    private String paymentMethod;
     @Element(required = false)
     private int charityId;
 
@@ -239,14 +237,6 @@ public class Item {
 
     public void setIsMultiVariationListing(String isMultiVariationListing) {
         this.isMultiVariationListing = isMultiVariationListing;
-    }
-
-    public String getPaymentMethod() {
-        return paymentMethod;
-    }
-
-    public void setPaymentMethod(String paymentMethod) {
-        this.paymentMethod = paymentMethod;
     }
 
     public int getCharityId() {

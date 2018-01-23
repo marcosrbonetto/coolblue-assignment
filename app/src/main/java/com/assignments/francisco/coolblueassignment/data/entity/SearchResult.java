@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by fran on 23/01/18.
  */
-@Element(name = "searchResult")
+@Root(name = "searchResult", strict = false)
 public class SearchResult {
 
     @Attribute(name = "count", required = false)

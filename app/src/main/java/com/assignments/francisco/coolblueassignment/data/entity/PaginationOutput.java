@@ -6,7 +6,7 @@ import org.simpleframework.xml.Root;
 /**
  * Created by fran on 23/01/18.
  */
-@Element(name = "paginationOutput")
+@Root(name = "paginationOutput", strict = false)
 public class PaginationOutput {
 
     @Element(name = "pageNumber", required = false)

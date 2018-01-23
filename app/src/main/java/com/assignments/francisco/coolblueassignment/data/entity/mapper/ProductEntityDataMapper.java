@@ -16,12 +16,13 @@ public class ProductEntityDataMapper {
     public static List<Product> transformProductEntities(FindItemsByKeywordsResponse result){
         ArrayList<Product> products = new ArrayList<>();
 
-        List<Item> productEntities = result.searchResult.item;
+        if(!result.searchResult.item.isEmpty()) {
+            List<Item> productEntities = result.searchResult.item;
 
-        for (int i = 0; i < productEntities.size(); i++) {
-            products.add(new Product.Builder(productEntities.get(i)).build());
+            for (int i = 0; i < productEntities.size(); i++) {
+                products.add(new Product.Builder(productEntities.get(i)).build());
+            }
         }
-
         return products;
     }
 

@@ -7,7 +7,7 @@ import org.simpleframework.xml.Root;
 /**
  * Created by fran on 23/01/18.
  */
-@Element(name = "shippingServiceCost")
+@Root(name = "shippingServiceCost", strict = false)
 public class ShippingServiceCost {
 
     @Element(name = "content", required = false)

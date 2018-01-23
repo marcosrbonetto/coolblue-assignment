@@ -6,7 +6,7 @@ import org.simpleframework.xml.Root;
 /**
  * Created by fran on 23/01/18.
  */
-@Root(name = "listingInfo")
+@Root(name = "listingInfo", strict = false)
 public class ListingInfo {
 
     @Element(name = "startTime", required = false)
