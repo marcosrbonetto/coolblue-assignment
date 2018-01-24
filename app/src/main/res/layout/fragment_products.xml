@@ -16,6 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
+            android:id="@+id/search_box"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/search_back"
@@ -37,7 +38,9 @@
         android:id="@+id/showing_items_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
         android:layout_marginTop="5dp"
+        android:gravity="center"
         android:text="@string/showing_items_label_default"
         app:layout_constraintTop_toBottomOf="@id/search_layout" />
 
@@ -45,5 +48,104 @@
         android:id="@+id/products_recycler"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/showing_items_label"/>
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/showing_items_label" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/loading_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.qintong.library.InsLoadingView
+            android:id="@+id/loader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/coolblue_logo"
+            app:layout_constraintEnd_toEndOf="@id/loading_view"
+            app:layout_constraintStart_toStartOf="@id/loading_view"
+            app:layout_constraintTop_toTopOf="@id/loading_view" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/loader_searching_products"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/loader" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/error_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/error_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/error_sign"
+            app:layout_constraintEnd_toEndOf="@id/error_view"
+            app:layout_constraintStart_toStartOf="@id/error_view"
+            app:layout_constraintTop_toTopOf="@id/error_view" />
+
+        <TextView
+            android:id="@+id/error_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:text="@string/error_no_connection"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/error_image" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/info_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/info_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/info_sign"
+            app:layout_constraintEnd_toEndOf="@id/info_view"
+            app:layout_constraintStart_toStartOf="@id/info_view"
+            app:layout_constraintTop_toTopOf="@id/info_view" />
+
+        <TextView
+            android:id="@+id/info_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:text="@string/info_no_items"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/info_image" />
+
+    </android.support.constraint.ConstraintLayout>
 </android.support.constraint.ConstraintLayout>

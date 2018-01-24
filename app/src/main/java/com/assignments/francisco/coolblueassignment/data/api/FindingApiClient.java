@@ -13,8 +13,8 @@ import retrofit2.http.Query;
 public interface FindingApiClient {
 
     @GET("services/search/FindingService/v1/")
-    Call<FindItemsByKeywordsResponse> getProductsByFilter(@Query("GLOBAL-ID") String globalId,
+    Call<FindItemsByKeywordsResponse> getProductsByCategory(@Query("GLOBAL-ID") String globalId,
             @Query("SECURITY-APPNAME") String appId, @Query("SERVICE-VERSION") String version,
             @Query("OPERATION-NAME") String operationName, @Query("RESPONSE-DATA-FORMAT") String dataFormat,
-            @Query("keywords") String keywords);
+            @Query("categoryId") int category);
 }

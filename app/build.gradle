@@ -4,7 +4,7 @@ android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.assignments.francisco.coolblueassignment"
-        minSdkVersion 19
+        minSdkVersion 23
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
@@ -33,6 +33,7 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     compile "com.android.support:recyclerview-v7:27.0.2"
     compile 'com.squareup.retrofit2:converter-simplexml:2.3.0'
+    compile 'com.qintong:insLoadingAnimation:1.1.0'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'

@@ -6,9 +6,9 @@ import com.assignments.francisco.coolblueassignment.domain.model.Product;
 import java.util.List;
 
 /**
- * EventBus event to send for getAllProducts UC.
+ * EventBus event to send for getProductsByCategory UC.
  */
 
-public class GetProductsResponseEvent extends BaseResponseEvent<List<Product>> {
+public class GetProductsByCategoryResponseEvent extends BaseResponseEvent<List<Product>> {
 
 }

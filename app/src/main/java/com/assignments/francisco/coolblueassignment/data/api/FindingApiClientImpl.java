@@ -1,6 +1,6 @@
 package com.assignments.francisco.coolblueassignment.data.api;
 
-import com.assignments.francisco.coolblueassignment.data.event.GetProductsResponseEvent;
+import com.assignments.francisco.coolblueassignment.data.event.GetProductsByCategoryResponseEvent;
 
 import javax.inject.Inject;
 
@@ -9,9 +9,9 @@ import javax.inject.Inject;
  * Created by fran on 22/01/18.
  */
 
-public class FindingApiClientImpl {
+public class FindingApiClientImpl extends FindingApi {
 
-    public static final String APP_ID = "Francisc-CoolBlue-PRD-a5d80d3bd-d45ab8cb";
+
     private FindingApiClient findingApiClient;
 
     @Inject
@@ -19,8 +19,13 @@ public class FindingApiClientImpl {
         this.findingApiClient = findingApiClient;
     }
 
-    public void getProducts() {
-        findingApiClient.getProductsByFilter("EBAY-US", APP_ID, "1.13.0", "findItemsByKeywords",
-                "XML", "android nexus 5").enqueue(new ProductCallback(new GetProductsResponseEvent()));
+    /**
+     * Search products for a certain category.
+     * Using default category. Of course, this is not the best approach. Should ask ebay for categories to show them al let the user choose which
+     * one he would like to visualize.
+     */
+    public void getProductsByCategory() {
+        findingApiClient.getProductsByCategory(GLOBAL_ID, APP_ID, VERSION, FIND_PRODUCTS_BY_CATEGORY_OPERATION_NAME,
+                DATA_FORMAT, DEFAULT_PRODUCTS_CATEGORY).enqueue(new ProductCallback(new GetProductsByCategoryResponseEvent()));
     }
 }

@@ -14,8 +14,6 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import javax.inject.Inject;
-
 /**
  * Created by fran on 22/01/18.
  */
@@ -23,12 +21,11 @@ import javax.inject.Inject;
 public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ProductViewHolder> {
 
     private List<Product> productEntities;
-
-    @Inject
     protected Context context;
 
-    public ProductsAdapter(List<Product> productEntities) {
+    public ProductsAdapter(List<Product> productEntities, Context context) {
         this.productEntities = productEntities;
+        this.context = context;
     }
 
     @Override
@@ -47,7 +44,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
 
         holder.title.setText(product.getTitle());
         holder.price.setText(product.getPrice());
-        setImageResourceWithGlide(holder.image, product.getImageUrl());
+        setImageResourceWithPicasso(holder.image, product.getImageUrl());
     }
 
     class ProductViewHolder extends RecyclerView.ViewHolder {
@@ -71,7 +68,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
      * @param imageView of resort.
      * @param url       to fetch the image from
      */
-    private void setImageResourceWithGlide(ImageView imageView, String url) {
+    private void setImageResourceWithPicasso(ImageView imageView, String url) {
         if (!TextUtils.isEmpty(url)) {
             Picasso.with(context)
                    .load(url)
