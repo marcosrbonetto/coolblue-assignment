@@ -1,12 +1,9 @@
-package com.assignments.francisco.coolblueassignment.data.entity;
+package com.assignments.francisco.coolblueassignment.data.model;
 
-import org.simpleframework.xml.Attribute;
-import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by fran on 23/01/18.
@@ -14,8 +11,14 @@ import java.util.List;
 @Root(name = "searchResult", strict = false)
 public class SearchResult {
 
-    @Attribute(name = "count", required = false)
-    public String count;
     @ElementList(entry = "item", required = false, inline = true)
-    public ArrayList<Item> item;
+    private ArrayList<Item> item;
+
+    public ArrayList<Item> getProducts() {
+        return item;
+    }
+
+    public void setProducts(ArrayList<Item> item) {
+        this.item = item;
+    }
 }

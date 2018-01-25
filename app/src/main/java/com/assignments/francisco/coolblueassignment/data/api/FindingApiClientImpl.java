@@ -1,6 +1,8 @@
 package com.assignments.francisco.coolblueassignment.data.api;
 
-import com.assignments.francisco.coolblueassignment.data.event.GetProductsByCategoryResponseEvent;
+import com.assignments.francisco.coolblueassignment.data.model.event.GetProductsByCategoryResponseEvent;
+import com.assignments.francisco.coolblueassignment.data.model.mapper.ProductEntityDataMapper;
+import com.squareup.otto.Bus;
 
 import javax.inject.Inject;
 
@@ -11,12 +13,15 @@ import javax.inject.Inject;
 
 public class FindingApiClientImpl extends FindingApi {
 
-
+    private Bus bus;
     private FindingApiClient findingApiClient;
+    private ProductEntityDataMapper productEntityDataMapper;
 
     @Inject
-    public FindingApiClientImpl(FindingApiClient findingApiClient) {
+    public FindingApiClientImpl(FindingApiClient findingApiClient, Bus bus, ProductEntityDataMapper productEntityDataMapper) {
         this.findingApiClient = findingApiClient;
+        this.bus = bus;
+        this.productEntityDataMapper = productEntityDataMapper;
     }
 
     /**
@@ -26,6 +31,7 @@ public class FindingApiClientImpl extends FindingApi {
      */
     public void getProductsByCategory() {
         findingApiClient.getProductsByCategory(GLOBAL_ID, APP_ID, VERSION, FIND_PRODUCTS_BY_CATEGORY_OPERATION_NAME,
-                DATA_FORMAT, DEFAULT_PRODUCTS_CATEGORY).enqueue(new ProductCallback(new GetProductsByCategoryResponseEvent()));
+                DATA_FORMAT, DEFAULT_PRODUCTS_CATEGORY).enqueue(new ProductCallback(
+                new GetProductsByCategoryResponseEvent(), bus, productEntityDataMapper));
     }
 }

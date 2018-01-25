@@ -1,6 +1,6 @@
 package com.assignments.francisco.coolblueassignment.data.api;
 
-import com.assignments.francisco.coolblueassignment.data.entity.FindItemsByKeywordsResponse;
+import com.assignments.francisco.coolblueassignment.data.model.FindItemsByKeywordsResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

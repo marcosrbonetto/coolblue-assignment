@@ -1,4 +1,4 @@
-package com.assignments.francisco.coolblueassignment.data.event;
+package com.assignments.francisco.coolblueassignment.data.model.event;
 
 /**
  * Base event for http request.
@@ -8,6 +8,7 @@ public abstract class BaseResponseEvent<T> {
 
     private T response;
     private int code;
+    private Throwable throwable;
 
     /**
      * Get response of HTTP request.
@@ -52,5 +53,17 @@ public abstract class BaseResponseEvent<T> {
      */
     public boolean hasResponse() {
         return response != null;
+    }
+
+    public boolean isSuccess(){
+        return hasResponse() && code == 200;
+    }
+
+    public Throwable getThrowable() {
+        return throwable;
+    }
+
+    public void setThrowable(Throwable throwable) {
+        this.throwable = throwable;
     }
 }

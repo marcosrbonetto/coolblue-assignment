@@ -1,4 +1,4 @@
-package com.assignments.francisco.coolblueassignment.data.entity;
+package com.assignments.francisco.coolblueassignment.data.model;
 
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;

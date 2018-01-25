@@ -41,7 +41,6 @@
         android:layout_marginBottom="5dp"
         android:layout_marginTop="5dp"
         android:gravity="center"
-        android:text="@string/showing_items_label_default"
         app:layout_constraintTop_toBottomOf="@id/search_layout" />
 
     <android.support.v7.widget.RecyclerView
@@ -108,7 +107,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:gravity="center"
-            android:text="@string/error_no_connection"
+            android:text="@string/problem_contacting_server"
             android:textColor="@android:color/darker_gray"
             android:textSize="20sp"
             app:layout_constraintTop_toBottomOf="@id/error_image" />

@@ -1,4 +1,4 @@
-package com.assignments.francisco.coolblueassignment.data.event;
+package com.assignments.francisco.coolblueassignment.data.model.event;
 
 
 import com.assignments.francisco.coolblueassignment.domain.model.Product;

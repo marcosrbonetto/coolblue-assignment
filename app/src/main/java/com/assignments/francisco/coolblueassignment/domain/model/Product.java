@@ -1,12 +1,15 @@
 package com.assignments.francisco.coolblueassignment.domain.model;
 
-import com.assignments.francisco.coolblueassignment.data.entity.Item;
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import com.assignments.francisco.coolblueassignment.data.model.Item;
 
 /**
  * Created by fran on 21/01/18.
  */
 
-public class Product {
+public class Product implements Parcelable{
 
     private final String title;
     private final String imageUrl;
@@ -44,12 +47,42 @@ public class Product {
 
             this.imageUrl = item.getGalleryURL();
 
-//            this.price = String.format(PRICE_FORMAT, item.getSellingStatus().getCurrentPrice().getCurrencyId(),
-//                    item.getSellingStatus().getCurrentPrice().getContent());
+            this.price = String.format(PRICE_FORMAT, item.getSellingStatus().getCurrentPrice().getCurrencyId(),
+                    item.getSellingStatus().getCurrentPrice().getPrice());
         }
 
         public Product build() {
             return new Product(this);
         }
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(title);
+        dest.writeString(imageUrl);
+        dest.writeString(price);
+    }
+
+    protected Product(Parcel in) {
+        title = in.readString();
+        imageUrl = in.readString();
+        price = in.readString();
+    }
+
+    public static final Creator<Product> CREATOR = new Creator<Product>() {
+        @Override
+        public Product createFromParcel(Parcel in) {
+            return new Product(in);
+        }
+
+        @Override
+        public Product[] newArray(int size) {
+            return new Product[size];
+        }
+    };
 }

@@ -4,6 +4,8 @@ import android.content.Context;
 
 import com.assignments.francisco.coolblueassignment.CoolBlueApplication;
 import com.assignments.francisco.coolblueassignment.data.api.FindingApiClient;
+import com.assignments.francisco.coolblueassignment.data.model.mapper.ProductEntityDataMapper;
+import com.squareup.otto.Bus;
 
 import org.simpleframework.xml.core.Persister;
 
@@ -35,6 +37,18 @@ public class CoolBlueModule {
     @Provides
     Context providesContext() {
         return application.getApplicationContext();
+    }
+
+    @Singleton
+    @Provides
+    Bus providesBus(){
+        return new Bus();
+    }
+
+    @Singleton
+    @Provides
+    ProductEntityDataMapper providesProductDataMapper(){
+        return new ProductEntityDataMapper();
     }
 
     @Singleton

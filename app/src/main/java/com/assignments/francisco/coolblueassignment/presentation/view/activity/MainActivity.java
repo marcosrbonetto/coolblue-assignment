@@ -14,8 +14,9 @@ public class MainActivity extends AppCompatActivity implements NavigationHandler
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        navigateToAllProductsFragment();
+        if(savedInstanceState == null) {
+            navigateToAllProductsFragment();
+        }
     }
 
     @Override

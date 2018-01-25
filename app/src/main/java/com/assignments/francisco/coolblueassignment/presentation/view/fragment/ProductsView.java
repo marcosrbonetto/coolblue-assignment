@@ -12,11 +12,11 @@ public interface ProductsView {
 
     void showProducts(List<Product> products);
 
-    void showErrorScreen(String error);
+    void showErrorScreen();
 
     void showEmptyScreen();
 
-    void setShowingItemsLabel(String showingItemsText);
+    void setShowingProductsLabelForSearch(int productsCount);
 
-    void changeSearchButtonState(boolean enabled);
+    void setShowingProductsLabelForCategory(String category);
 }

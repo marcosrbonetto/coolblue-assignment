@@ -3,6 +3,8 @@ package com.assignments.francisco.coolblueassignment.presentation.view.fragment;
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +19,7 @@ import com.assignments.francisco.coolblueassignment.domain.model.Product;
 import com.assignments.francisco.coolblueassignment.presentation.presenter.ProductsPresenter;
 import com.assignments.francisco.coolblueassignment.presentation.view.adapter.ProductsAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -24,9 +27,12 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ProductsFragment extends Fragment implements ProductsView{
+public class ProductsFragment extends Fragment implements ProductsView {
 
-    private List<Product> products;
+    private static final String PRODUCTS = "products";
+    private static final String SHOWING_ITEM_TEXT = "showingItemsText";
+    private static final String SEARCH_BOX_TEXT = "searchBox";
+
     private ProductsAdapter productsAdapter;
 
     @BindView(R.id.search_button)
@@ -57,7 +63,6 @@ public class ProductsFragment extends Fragment implements ProductsView{
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     *
      * @return A new instance of fragment ProductsFragment.
      */
     public static ProductsFragment newInstance() {
@@ -84,30 +89,77 @@ public class ProductsFragment extends Fragment implements ProductsView{
         View parent = inflater.inflate(R.layout.fragment_products, container, false);
         ButterKnife.bind(this, parent);
 
-        setupClickInSearchButton();
+        productsRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        setupClickInSearchButton();
         return parent;
     }
 
     @Override
+    public void onSaveInstanceState(Bundle outState) {
+        if (productsAdapter != null) {
+            outState.putParcelableArrayList(PRODUCTS, (ArrayList) productsAdapter.getProducts());
+            outState.putString(SEARCH_BOX_TEXT, searchBox.getText().toString());
+            outState.putString(SHOWING_ITEM_TEXT, showingItemsLabel.getText().toString());
+        }
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void onViewStateRestored(Bundle savedInstanceState) {
+        if(savedInstanceState != null && savedInstanceState.containsKey(PRODUCTS)) {
+            ArrayList<Product> products = savedInstanceState.getParcelableArrayList(PRODUCTS);
+            setAdapterRecycler(products);
+            searchBox.setText(savedInstanceState.getString(SEARCH_BOX_TEXT));
+            showingItemsLabel.setText(savedInstanceState.getString(SHOWING_ITEM_TEXT));
+        }
+        super.onViewStateRestored(savedInstanceState);
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        presenter.setView(this);
+        super.onViewCreated(view, savedInstanceState);
+    }
+
+    @Override
+    public void onResume() {
+        presenter.registerBus();
+        if (productsAdapter == null) {
+            presenter.getProductsByCategory();
+        }
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        presenter.unregisterBus();
+        super.onPause();
+    }
+
+    @Override
+    public void onDestroyView() {
+        presenter.setView(null);
+        super.onDestroyView();
+    }
+
+    @Override
     public void showProducts(List<Product> products) {
+        changeSearchBoxState(true);
         productsRecycler.setVisibility(View.VISIBLE);
         errorView.setVisibility(View.GONE);
         loadingView.setVisibility(View.GONE);
         infoView.setVisibility(View.GONE);
 
-        this.products = products;
-        productsAdapter = new ProductsAdapter(products, getContext());
-        productsRecycler.setAdapter(productsAdapter);
+        setAdapterRecycler(products);
     }
 
     @Override
-    public void showErrorScreen(String error) {
+    public void showErrorScreen() {
         productsRecycler.setVisibility(View.GONE);
         errorView.setVisibility(View.VISIBLE);
         loadingView.setVisibility(View.GONE);
         infoView.setVisibility(View.GONE);
-        errorLabel.setText(error);
     }
 
     @Override
@@ -116,24 +168,37 @@ public class ProductsFragment extends Fragment implements ProductsView{
         errorView.setVisibility(View.VISIBLE);
         loadingView.setVisibility(View.GONE);
         infoView.setVisibility(View.GONE);
+
+        showingItemsLabel.setText(R.string.showing_items_label_no_results);
     }
 
     @Override
-    public void setShowingItemsLabel(String showingItemsText) {
-        showingItemsLabel.setText(showingItemsText);
+    public void setShowingProductsLabelForSearch(int productsCount) {
+        showingItemsLabel.setText(getString(R.string.showing_items_label, productsCount, searchBox.getText()));
+    }
+
+    @Override
+    public void setShowingProductsLabelForCategory(String category) {
+        showingItemsLabel.setText(getString(R.string.showing_items_label_category, category));
     }
 
     private void setupClickInSearchButton() {
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.getProductsByCategory();
+                changeSearchBoxState(false);
+                //TODO searchByKeywords
             }
         });
     }
 
-    @Override
-    public void changeSearchButtonState(boolean enabled){
+    private void changeSearchBoxState(boolean enabled) {
+        searchBox.setEnabled(enabled);
         searchButton.setEnabled(enabled);
+    }
+
+    private void setAdapterRecycler(List<Product> products) {
+        productsAdapter = new ProductsAdapter(products, getContext());
+        productsRecycler.setAdapter(productsAdapter);
     }
 }

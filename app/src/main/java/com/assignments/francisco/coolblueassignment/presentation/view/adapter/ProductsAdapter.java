@@ -20,11 +20,11 @@ import java.util.List;
 
 public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ProductViewHolder> {
 
-    private List<Product> productEntities;
+    private List<Product> products;
     protected Context context;
 
-    public ProductsAdapter(List<Product> productEntities, Context context) {
-        this.productEntities = productEntities;
+    public ProductsAdapter(List<Product> products, Context context) {
+        this.products = products;
         this.context = context;
     }
 
@@ -35,12 +35,12 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
 
     @Override
     public int getItemCount() {
-        return productEntities.size();
+        return products.size();
     }
 
     @Override
     public void onBindViewHolder(ProductViewHolder holder, int position) {
-        Product product = productEntities.get(position);
+        Product product = products.get(position);
 
         holder.title.setText(product.getTitle());
         holder.price.setText(product.getPrice());
@@ -77,5 +77,9 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
         } else {
             imageView.setImageResource(R.drawable.coolblue_no_image);
         }
+    }
+
+    public List<Product> getProducts(){
+        return this.products;
     }
 }
