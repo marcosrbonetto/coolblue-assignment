@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.assignments.francisco.coolblueassignment.CoolBlueApplication;
 import com.assignments.francisco.coolblueassignment.data.api.FindingApiClient;
-import com.assignments.francisco.coolblueassignment.data.model.mapper.ProductEntityDataMapper;
+import com.assignments.francisco.coolblueassignment.data.model.mapper.ProductDataMapper;
 import com.squareup.otto.Bus;
 
 import org.simpleframework.xml.core.Persister;
@@ -47,8 +47,8 @@ public class CoolBlueModule {
 
     @Singleton
     @Provides
-    ProductEntityDataMapper providesProductDataMapper(){
-        return new ProductEntityDataMapper();
+    ProductDataMapper providesProductDataMapper(){
+        return new ProductDataMapper();
     }
 
     @Singleton

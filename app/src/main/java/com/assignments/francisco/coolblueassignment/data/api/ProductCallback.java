@@ -1,8 +1,8 @@
 package com.assignments.francisco.coolblueassignment.data.api;
 
-import com.assignments.francisco.coolblueassignment.data.model.FindItemsByKeywordsResponse;
-import com.assignments.francisco.coolblueassignment.data.model.mapper.ProductEntityDataMapper;
+import com.assignments.francisco.coolblueassignment.data.model.ProductsResponse;
 import com.assignments.francisco.coolblueassignment.data.model.event.BaseResponseEvent;
+import com.assignments.francisco.coolblueassignment.data.model.mapper.ProductDataMapper;
 import com.assignments.francisco.coolblueassignment.domain.model.Product;
 import com.squareup.otto.Bus;
 
@@ -19,17 +19,17 @@ public final class ProductCallback implements Callback {
 
     private BaseResponseEvent baseResponseEvent;
     private Bus bus;
-    private ProductEntityDataMapper productEntityDataMapper;
+    private ProductDataMapper productDataMapper;
 
-    public ProductCallback(BaseResponseEvent baseResponseEvent, Bus bus, ProductEntityDataMapper productEntityDataMapper) {
+    public ProductCallback(BaseResponseEvent baseResponseEvent, Bus bus, ProductDataMapper productDataMapper) {
         this.baseResponseEvent = baseResponseEvent;
         this.bus = bus;
-        this.productEntityDataMapper = productEntityDataMapper;
+        this.productDataMapper = productDataMapper;
     }
 
     @Override
     public void onResponse(Call call, Response response) {
-        List<Product> productList = productEntityDataMapper.transformProductEntities((FindItemsByKeywordsResponse) response.body());
+        List<Product> productList = productDataMapper.transformProductEntities((ProductsResponse) response.body());
         baseResponseEvent.setCode(response.code());
         baseResponseEvent.setResponse(productList);
         bus.post(baseResponseEvent);

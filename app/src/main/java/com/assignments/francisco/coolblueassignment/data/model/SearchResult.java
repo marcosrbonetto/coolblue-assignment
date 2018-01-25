@@ -12,13 +12,13 @@ import java.util.ArrayList;
 public class SearchResult {
 
     @ElementList(entry = "item", required = false, inline = true)
-    private ArrayList<Item> item;
+    private ArrayList<Item> products;
 
     public ArrayList<Item> getProducts() {
-        return item;
+        return products;
     }
 
     public void setProducts(ArrayList<Item> item) {
-        this.item = item;
+        this.products = item;
     }
 }

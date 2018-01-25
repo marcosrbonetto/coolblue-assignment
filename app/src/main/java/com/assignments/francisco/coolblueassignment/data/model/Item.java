@@ -7,7 +7,7 @@ import org.simpleframework.xml.Root;
  * Created by fran on 23/01/18.
  */
 
-@Root(strict = false)
+@Root(name = "item", strict = false)
 public class Item {
 
     @Element(name = "primaryCategory", required = false)
@@ -18,9 +18,6 @@ public class Item {
 
     @Element(name = "location", required = false)
     private String location;
-
-    @Element(name = "itemId", required = false)
-    private String itemId;
 
     @Element(name = "shippingInfo", required = false)
     private ShippingInfo shippingInfo;
@@ -62,14 +59,6 @@ public class Item {
 
     public void setLocation(String location) {
         this.location = location;
-    }
-
-    public String getItemId() {
-        return itemId;
-    }
-
-    public void setItemId(String itemId) {
-        this.itemId = itemId;
     }
 
     public ShippingInfo getShippingInfo() {
