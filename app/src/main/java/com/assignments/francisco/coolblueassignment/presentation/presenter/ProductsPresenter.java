@@ -55,6 +55,7 @@ public class ProductsPresenter {
      * Get products according to default category.
      */
     public void getProductsByCategory() {
+        view.showLoadingScreen();
         getProductsByCategory.execute();
     }
 

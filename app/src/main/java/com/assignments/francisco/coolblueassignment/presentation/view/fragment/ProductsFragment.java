@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -89,7 +90,9 @@ public class ProductsFragment extends Fragment implements ProductsView {
         View parent = inflater.inflate(R.layout.fragment_products, container, false);
         ButterKnife.bind(this, parent);
 
-        productsRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        productsRecycler.setLayoutManager(layoutManager);
+        productsRecycler.addItemDecoration(new DividerItemDecoration(getContext(), layoutManager.getOrientation()));
 
         setupClickInSearchButton();
         return parent;
@@ -109,7 +112,7 @@ public class ProductsFragment extends Fragment implements ProductsView {
     public void onViewStateRestored(Bundle savedInstanceState) {
         if(savedInstanceState != null && savedInstanceState.containsKey(PRODUCTS)) {
             ArrayList<Product> products = savedInstanceState.getParcelableArrayList(PRODUCTS);
-            setAdapterRecycler(products);
+            showProducts(products);
             searchBox.setText(savedInstanceState.getString(SEARCH_BOX_TEXT));
             showingItemsLabel.setText(savedInstanceState.getString(SHOWING_ITEM_TEXT));
         }
@@ -159,6 +162,14 @@ public class ProductsFragment extends Fragment implements ProductsView {
         productsRecycler.setVisibility(View.GONE);
         errorView.setVisibility(View.VISIBLE);
         loadingView.setVisibility(View.GONE);
+        infoView.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showLoadingScreen() {
+        productsRecycler.setVisibility(View.GONE);
+        errorView.setVisibility(View.GONE);
+        loadingView.setVisibility(View.VISIBLE);
         infoView.setVisibility(View.GONE);
     }
 

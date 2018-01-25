@@ -73,6 +73,8 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
             Picasso.with(context)
                    .load(url)
                    .placeholder(R.drawable.coolblue_loading)
+                   .fit()
+                   .centerCrop()
                    .into(imageView);
         } else {
             imageView.setImageResource(R.drawable.coolblue_no_image);

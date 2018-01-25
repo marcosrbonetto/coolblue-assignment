@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
+    android:paddingTop="10dp"
+    android:paddingStart="10dp"
+    android:paddingEnd="10dp"
     tools:context="com.assignments.francisco.coolblueassignment.presentation.view.fragment.ProductsFragment">
 
     <LinearLayout
@@ -34,29 +36,39 @@
             android:textSize="12sp" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/showing_items_label"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp"
-        android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@id/search_layout" />
+        android:layout_marginTop="10dp"
+        android:divider="@drawable/list_divider"
+        android:orientation="vertical"
+        android:showDividers="middle"
+        app:layout_constraintTop_toBottomOf="@id/search_layout">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/products_recycler"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@id/showing_items_label" />
+        <TextView
+            android:id="@+id/showing_items_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:gravity="center"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="16sp" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/products_recycler"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/showing_items_label" />
+    </LinearLayout>
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/loading_view"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/loading_view"
+        app:layout_constraintStart_toStartOf="@id/loading_view"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.qintong.library.InsLoadingView
@@ -82,14 +94,12 @@
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/error_view"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/loading_view"
+        app:layout_constraintStart_toStartOf="@id/loading_view"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
@@ -116,14 +126,12 @@
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/info_view"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/loading_view"
+        app:layout_constraintStart_toStartOf="@id/loading_view"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView

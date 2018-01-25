@@ -14,6 +14,8 @@ public interface ProductsView {
 
     void showErrorScreen();
 
+    void showLoadingScreen();
+
     void showEmptyScreen();
 
     void setShowingProductsLabelForSearch(int productsCount);
