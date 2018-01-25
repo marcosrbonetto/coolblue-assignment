@@ -1,6 +1,6 @@
 package com.assignments.francisco.coolblueassignment.data.api;
 
-import com.assignments.francisco.coolblueassignment.data.model.event.GetProductsByCategoryResponseEvent;
+import com.assignments.francisco.coolblueassignment.data.model.event.GetProductsResponseEvent;
 import com.assignments.francisco.coolblueassignment.data.model.mapper.ProductDataMapper;
 import com.squareup.otto.Bus;
 
@@ -8,10 +8,11 @@ import javax.inject.Inject;
 
 
 /**
- * Created by fran on 22/01/18.
+ * API client to use with ebay finding API.
  */
-
-public class FindingApiClientImpl extends FindingApi {
+public class FindingApiClientImpl {
+    public static final int DEFAULT_PRODUCTS_CATEGORY = 9355;//Cell Phones & Smartphones category.
+    public static final String DEFAULT_GLOBAL_ID = "EBAY-US";
 
     private Bus bus;
     private FindingApiClient findingApiClient;
@@ -26,11 +27,22 @@ public class FindingApiClientImpl extends FindingApi {
 
     /**
      * Search products for a certain category.
-     * Using default category. Of course, this is not the best approach. Should ask ebay for categories to show them al let the user choose which
-     * one he would like to visualize.
      */
     public void getProductsByCategory() {
+        //TODO Using default category. This is not the best approach. Should be asking for ebay categories to show them and let the user choose which
+        // one he would like to visualize.
+
         findingApiClient.getProductsByCategory(DEFAULT_GLOBAL_ID, DEFAULT_PRODUCTS_CATEGORY)
-                        .enqueue(new ProductCallback(new GetProductsByCategoryResponseEvent(), bus, productDataMapper));
+                        .enqueue(new ProductCallback(new GetProductsResponseEvent(), bus, productDataMapper));
+    }
+
+    /**
+     * Search products based on keywords typed by the user.
+
+     * @param keywords
+     */
+    public void getProductsByKeywords(String keywords) {
+        findingApiClient.getProductsByKeywords(DEFAULT_GLOBAL_ID, keywords)
+                        .enqueue(new ProductCallback(new GetProductsResponseEvent(), bus, productDataMapper));
     }
 }

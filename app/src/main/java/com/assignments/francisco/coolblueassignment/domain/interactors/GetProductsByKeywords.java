@@ -7,17 +7,17 @@ import javax.inject.Inject;
 /**
  * Created by fran on 22/01/18.
  */
-public class GetProductsByCategory {
+public class GetProductsByKeywords {
 
     private FindingApiClientImpl findingApiClientImpl;
 
     @Inject
-    public GetProductsByCategory(FindingApiClientImpl findingApiClientImpl) {
+    public GetProductsByKeywords(FindingApiClientImpl findingApiClientImpl) {
         this.findingApiClientImpl = findingApiClientImpl;
     }
 
 
-    public void execute() {
-        findingApiClientImpl.getProductsByCategory();
+    public void execute(String keywords) {
+        findingApiClientImpl.getProductsByKeywords(keywords);
     }
 }

@@ -5,11 +5,13 @@ import android.os.Parcelable;
 
 import com.assignments.francisco.coolblueassignment.data.model.Item;
 
+import java.text.DecimalFormat;
+
 /**
  * Created by fran on 21/01/18.
  */
 
-public class Product implements Parcelable{
+public class Product implements Parcelable {
 
     private final String title;
     private final String imageUrl;
@@ -47,8 +49,25 @@ public class Product implements Parcelable{
 
             this.imageUrl = item.getGalleryURL();
 
-            this.price = String.format(PRICE_FORMAT, item.getSellingStatus().getCurrentPrice().getCurrencyId(),
-                    item.getSellingStatus().getCurrentPrice().getPrice());
+            this.price = String.format(PRICE_FORMAT,
+                    item.getSellingStatus().getCurrentPrice().getCurrencyId(),
+                    getPriceWithoutTrailingZeros(item.getSellingStatus().getCurrentPrice().getPrice()));
+        }
+
+        /**
+         * Removes trailing zeros.
+         *
+         * @return rounded price
+         */
+        private String getPriceWithoutTrailingZeros(String price) {
+            String convertedPrice;
+            try {
+                DecimalFormat format = new DecimalFormat("0.00");
+                convertedPrice = format.format(Double.parseDouble(price));
+            } catch (NumberFormatException nfe) {
+                convertedPrice = "Wrong price";
+            }
+            return convertedPrice;
         }
 
         public Product build() {

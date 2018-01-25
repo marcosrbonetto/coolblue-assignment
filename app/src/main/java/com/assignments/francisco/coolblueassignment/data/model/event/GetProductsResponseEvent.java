@@ -9,6 +9,6 @@ import java.util.List;
  * EventBus event to send for getProductsByCategory UC.
  */
 
-public class GetProductsByCategoryResponseEvent extends BaseResponseEvent<List<Product>> {
+public class GetProductsResponseEvent extends BaseResponseEvent<List<Product>> {
 
 }

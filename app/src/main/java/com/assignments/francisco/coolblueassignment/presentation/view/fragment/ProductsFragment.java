@@ -198,7 +198,7 @@ public class ProductsFragment extends Fragment implements ProductsView {
             @Override
             public void onClick(View v) {
                 changeSearchBoxState(false);
-                //TODO searchByKeywords
+                presenter.getProductsByKeywords(searchBox.getText().toString());
             }
         });
     }

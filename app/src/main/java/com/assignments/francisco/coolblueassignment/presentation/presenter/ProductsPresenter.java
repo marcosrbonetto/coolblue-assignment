@@ -2,8 +2,9 @@ package com.assignments.francisco.coolblueassignment.presentation.presenter;
 
 import android.support.annotation.NonNull;
 
-import com.assignments.francisco.coolblueassignment.data.model.event.GetProductsByCategoryResponseEvent;
+import com.assignments.francisco.coolblueassignment.data.model.event.GetProductsResponseEvent;
 import com.assignments.francisco.coolblueassignment.domain.interactors.GetProductsByCategory;
+import com.assignments.francisco.coolblueassignment.domain.interactors.GetProductsByKeywords;
 import com.assignments.francisco.coolblueassignment.presentation.view.fragment.ProductsView;
 import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
@@ -19,13 +20,15 @@ public class ProductsPresenter {
     private static final String DEFAULT_CATEGORY = "Cellphones & Smartphones";
 
     private GetProductsByCategory getProductsByCategory;
+    private GetProductsByKeywords getProductsByKeywords;
     private ProductsView view;
     private Bus bus;
 
     @Inject
-    public ProductsPresenter(GetProductsByCategory getProductsByCategory, Bus bus) {
-        this.getProductsByCategory = getProductsByCategory;
+    public ProductsPresenter(Bus bus, GetProductsByCategory getProductsByCategory, GetProductsByKeywords getProductsByKeywords) {
         this.bus = bus;
+        this.getProductsByCategory = getProductsByCategory;
+        this.getProductsByKeywords = getProductsByKeywords;
     }
 
     /**
@@ -60,7 +63,7 @@ public class ProductsPresenter {
     }
 
     @Subscribe
-    public void onGetProductsByCategoryEvent(GetProductsByCategoryResponseEvent event) {
+    public void onGetProductsByCategoryEvent(GetProductsResponseEvent event) {
         if (view != null) {
             if (event.isSuccess()) {
                 if (event.getResponse().size() == 0) {
@@ -73,5 +76,10 @@ public class ProductsPresenter {
                 view.showErrorScreen();
             }
         }
+    }
+
+    public void getProductsByKeywords(String keywords) {
+        view.showLoadingScreen();
+        getProductsByKeywords.execute(keywords);
     }
 }
