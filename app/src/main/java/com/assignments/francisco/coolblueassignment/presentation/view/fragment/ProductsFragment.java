@@ -196,6 +196,7 @@ public class ProductsFragment extends Fragment implements ProductsView {
     public void showLoadingScreen() {
         changeSearchBoxState(false);
         changeFilterViewVisibility(false);
+        hideKeyBoard();
         productsRecycler.setVisibility(View.GONE);
         errorView.setVisibility(View.GONE);
         loadingView.setVisibility(View.VISIBLE);
@@ -231,11 +232,6 @@ public class ProductsFragment extends Fragment implements ProductsView {
                 String minPrice = minPriceFilter.getText().toString();
                 String maxPrice = maxPriceFilter.getText().toString();
                 presenter.getProductsByKeywords(lastSearch, minPrice, maxPrice);
-
-                InputMethodManager inputManager =
-                        (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-                inputManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(),
-                        InputMethodManager.HIDE_NOT_ALWAYS);
             }
         });
     }
@@ -276,5 +272,12 @@ public class ProductsFragment extends Fragment implements ProductsView {
     @Override
     public void showEmptyKeywordsError() {
         Toast.makeText(getContext(), R.string.search_box_empty_error, Toast.LENGTH_LONG).show();
+    }
+
+    private void hideKeyBoard() {
+        InputMethodManager inputManager =
+                (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(),
+                InputMethodManager.HIDE_NOT_ALWAYS);
     }
 }

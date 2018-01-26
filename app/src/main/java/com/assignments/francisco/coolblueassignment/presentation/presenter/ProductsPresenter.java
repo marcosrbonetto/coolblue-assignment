@@ -112,8 +112,8 @@ public class ProductsPresenter {
      */
     private boolean hasFilters(String minPrice, String maxPrice) {
         //TODO This kind of method in a large application wouldn't be here.
-        // Most probably filters would be in a different view with their
-        // respective presenter
+        // Most probably ui filters would be in a different view with their
+        // respective presenter and models.
         return !minPrice.isEmpty() || !maxPrice.isEmpty();
     }
 
@@ -127,8 +127,8 @@ public class ProductsPresenter {
      */
     private boolean areFiltersWellFormed(String minPrice, String maxPrice) {
         //TODO This kind of method in a large application wouldn't be here.
-        // Most probably filters would be in a different view with their
-        // respective presenter
+        // Most probably ui filters would be in a different view with their
+        // respective presenter and models.
         try {
             double min = Double.parseDouble(minPrice);
             double max = Double.parseDouble(maxPrice);

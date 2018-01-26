@@ -17,7 +17,6 @@ import dagger.Provides;
 public class CoolBluePresentationModule {
 
     private CoolBlueApplication application;
-    public static final String HOST = "http://svcs.ebay.com/";
 
     public CoolBluePresentationModule(CoolBlueApplication application) {
         this.application = application;
