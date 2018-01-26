@@ -16,8 +16,11 @@ public class GetProductsByCategory {
         this.findingApiClientImpl = findingApiClientImpl;
     }
 
-
+    /**
+     * Executes get products by category use case for the default category.
+     */
     public void execute() {
         findingApiClientImpl.getProductsByCategory();
     }
+
 }

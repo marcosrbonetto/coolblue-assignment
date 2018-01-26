@@ -8,4 +8,15 @@
     <string name="loader_searching_products">Searching products&#8230;</string>
     <string name="problem_contacting_server">We had a problem retrieving products\nPlease try again</string>
     <string name="info_no_items">The search threw no results\nPlease try with different words</string>
+    <string name="preference_file_key">coolblue_preferences</string>
+    <string name="filter_title">filter</string>
+    <string name="filter_button">Apply</string>
+    <string name="price_filter_label_default">Price filter:</string>
+    <string name="price_filter_error">Please complete both price filters</string>
+    <string name="minimum_price_hint">"Minimum price "</string>
+    <string name="maximum_price_hint">"Maximum price"</string>
+    <string name="zero">0</string>
+    <string name="infinit">Infinit!</string>
+    <string name="max_lower_than_min_price_filter_error">Maximum filter value can\'t be lower than minimum value</string>
+    <string name="search_box_empty_error">Please complete the product you\'re looking for</string>
 </resources>

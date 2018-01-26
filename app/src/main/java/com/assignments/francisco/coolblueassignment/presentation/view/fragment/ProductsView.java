@@ -21,4 +21,10 @@ public interface ProductsView {
     void setShowingProductsLabelForSearch(int productsCount);
 
     void setShowingProductsLabelForCategory(String category);
+
+    void showPriceFilterError();
+
+    void showMaxLowerThanMinPriceFilterError();
+
+    void showEmptyKeywordsError();
 }

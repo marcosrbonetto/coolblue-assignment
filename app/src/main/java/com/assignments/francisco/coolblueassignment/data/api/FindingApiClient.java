@@ -34,4 +34,20 @@ public interface FindingApiClient {
     @GET("services/search/FindingService/v1/?SECURITY-APPNAME=Francisc-CoolBlue-PRD-a5d80d3bd-d45ab8cb" +
             "&SERVICE-VERSION=1.13.0&RESPONSE-DATA-FORMAT=XML&OPERATION-NAME=findItemsByKeywords")
     Call<ProductsResponse> getProductsByKeywords(@Query("GLOBAL-ID") String globalId, @Query("keywords") String keywords);
+
+    /**
+     * Forms a call for getProductsByKeywords operation with price filters.
+     *
+     * @param globalId Store id. Default is EBAY-US
+     * @param keywords keywords typed by the user to search.
+     * @param minPrice minimum price filter
+     * @param maxPrice maximum price filter
+     *
+     * @return formed Call<ProductResponse> object to perform.
+     */
+    @GET("services/search/FindingService/v1/?SECURITY-APPNAME=Francisc-CoolBlue-PRD-a5d80d3bd-d45ab8cb" +
+            "&SERVICE-VERSION=1.13.0&RESPONSE-DATA-FORMAT=XML&OPERATION-NAME=findItemsByKeywords")
+    Call<ProductsResponse> getProductsByKeywords(@Query("GLOBAL-ID") String globalId, @Query("keywords") String keywords,
+            @Query("itemFilter.name") String minPriceLabel, @Query("itemFilter.value") String minPrice,
+            @Query("itemFilter.name") String maxPriceLabel, @Query("itemFilter.value") String maxPrice);
 }

@@ -55,7 +55,7 @@ public class CoolBlueModule {
     @Provides
     Retrofit providesRetrofit() {
         OkHttpClient.Builder okHttpClientBuilder = new OkHttpClient.Builder();
-        okHttpClientBuilder.connectTimeout(10, TimeUnit.SECONDS);
+        okHttpClientBuilder.connectTimeout(7, TimeUnit.SECONDS);
 
         return new Retrofit.Builder()
                 .baseUrl(HOST)

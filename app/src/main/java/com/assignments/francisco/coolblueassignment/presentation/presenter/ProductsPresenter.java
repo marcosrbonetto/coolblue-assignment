@@ -1,7 +1,5 @@
 package com.assignments.francisco.coolblueassignment.presentation.presenter;
 
-import android.support.annotation.NonNull;
-
 import com.assignments.francisco.coolblueassignment.data.model.event.GetProductsResponseEvent;
 import com.assignments.francisco.coolblueassignment.domain.interactors.GetProductsByCategory;
 import com.assignments.francisco.coolblueassignment.domain.interactors.GetProductsByKeywords;
@@ -36,7 +34,7 @@ public class ProductsPresenter {
      *
      * @param view to interact with presenter.
      */
-    public void setView(@NonNull ProductsView view) {
+    public void setView(ProductsView view) {
         this.view = view;
     }
 
@@ -66,11 +64,16 @@ public class ProductsPresenter {
     public void onGetProductsByCategoryEvent(GetProductsResponseEvent event) {
         if (view != null) {
             if (event.isSuccess()) {
-                if (event.getResponse().size() == 0) {
+                int productsCount = event.getResponse().size();
+                if (productsCount == 0) {
                     view.showEmptyScreen();
                 } else {
                     view.showProducts(event.getResponse());
-                    view.setShowingProductsLabelForCategory(DEFAULT_CATEGORY);
+                    if (event.isCategoryType()) {
+                        view.setShowingProductsLabelForCategory(DEFAULT_CATEGORY);
+                    } else {
+                        view.setShowingProductsLabelForSearch(productsCount);
+                    }
                 }
             } else {
                 view.showErrorScreen();
@@ -78,8 +81,56 @@ public class ProductsPresenter {
         }
     }
 
-    public void getProductsByKeywords(String keywords) {
-        view.showLoadingScreen();
-        getProductsByKeywords.execute(keywords);
+    public void getProductsByKeywords(String keywords, String minPrice, String maxPrice) {
+        if (view != null) {
+            if(keywords == null || keywords.isEmpty()){
+                view.showEmptyKeywordsError();
+                return;
+            }
+
+            if(hasFilters(minPrice, maxPrice)){
+                if(areFiltersWellFormed(minPrice, maxPrice)){
+                    view.showLoadingScreen();
+                    getProductsByKeywords.execute(keywords, minPrice, maxPrice);
+                } else {
+                    view.showPriceFilterError();
+                }
+            } else {
+                view.showLoadingScreen();
+                getProductsByKeywords.execute(keywords);
+            }
+        }
+    }
+
+    /**
+     * Validates if a request has price filter.
+     * @param minPrice
+     * @param maxPrice
+     * @return
+     */
+    private boolean hasFilters(String minPrice, String maxPrice) {
+        //TODO This kind of method in a large application wouldn't be here.
+        // Most probably filters would be in a different view with their
+        // respective presenter
+        return !minPrice.isEmpty() || !maxPrice.isEmpty();
+    }
+
+    /**
+     * Validates filters are well formed.
+     * @param minPrice
+     * @param maxPrice
+     * @return
+     */
+    private boolean areFiltersWellFormed(String minPrice, String maxPrice){
+        //TODO This kind of method in a large application wouldn't be here.
+        // Most probably filters would be in a different view with their
+        // respective presenter
+        try {
+            double min = Double.parseDouble(minPrice);
+            double max = Double.parseDouble(maxPrice);
+            return  min <= max;
+        } catch (NumberFormatException numberFormatException){
+            return false;
+        }
     }
 }

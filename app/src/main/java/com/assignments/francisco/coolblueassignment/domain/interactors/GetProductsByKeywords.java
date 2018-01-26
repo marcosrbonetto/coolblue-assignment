@@ -20,4 +20,8 @@ public class GetProductsByKeywords {
     public void execute(String keywords) {
         findingApiClientImpl.getProductsByKeywords(keywords);
     }
+
+    public void execute(String keywords, String minPrice, String maxPrice) {
+        findingApiClientImpl.getProductsByKeywords(keywords, minPrice, maxPrice);
+    }
 }
