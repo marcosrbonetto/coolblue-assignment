@@ -10,8 +10,7 @@ import com.assignments.francisco.coolblueassignment.di.modules.CoolBlueModule;
 /**
  * Created by fran on 21/01/18.
  */
-
-public class CoolBlueApplication extends Application implements CoolBlueComponentProvider{
+public class CoolBlueApplication extends Application implements CoolBlueComponentProvider {
 
     private static CoolBlueComponent coolBlueComponent;
 

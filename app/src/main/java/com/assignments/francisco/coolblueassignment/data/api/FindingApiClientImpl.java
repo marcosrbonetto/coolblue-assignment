@@ -34,7 +34,8 @@ public class FindingApiClientImpl {
      * Search products for a certain category.
      */
     public void getProductsByCategory() {
-        //TODO Using default category. This is not the best approach. Should be asking for ebay categories to show them and let the user choose which
+        //TODO Using default category. This is not the best approach.
+        // Should be asking for ebay categories to show them and let the user choose which
         // one he would like to visualize.
 
         findingApiClient.getProductsByCategory(DEFAULT_GLOBAL_ID, DEFAULT_PRODUCTS_CATEGORY)
@@ -43,7 +44,7 @@ public class FindingApiClientImpl {
 
     /**
      * Search products based on keywords typed by the user.
-
+     *
      * @param keywords
      */
     public void getProductsByKeywords(String keywords) {
@@ -53,7 +54,7 @@ public class FindingApiClientImpl {
 
     /**
      * Search products based on keywords typed by the user.
-
+     *
      * @param keywords
      */
     public void getProductsByKeywords(String keywords, String minPrice, String maxPrice) {

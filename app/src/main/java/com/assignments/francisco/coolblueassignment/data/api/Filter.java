@@ -16,16 +16,13 @@ public class Filter {
     @StringDef({
             FilterName.MIN_PRICE,
             FilterName.MAX_PRICE,
-            FilterName.COLOR
     })
-    @interface FilterName{
-        String MIN_PRICE = "minPrice";
-        String MAX_PRICE = "maxPrice";
-        String COLOR = "color";
+    @interface FilterName {
+        String MIN_PRICE = "MinPrice";
+        String MAX_PRICE = "MaxPrice";
     }
 
-    private @FilterName
-    String name;
+    private @FilterName String name;
     private String value;
 
     public Filter(@FilterName String name, String value) {

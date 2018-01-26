@@ -10,16 +10,15 @@ import java.util.List;
 /**
  * Created by fran on 22/01/18.
  */
-
 public class ProductDataMapper {
 
-    public List<Product> transformProductEntities(ProductsResponse result){
-        ArrayList<Product> products = new ArrayList<>();
+    public List<Product> transformProductEntities(ProductsResponse result) {
+        List<Product> products = new ArrayList<>();
         List<Item> productEntities = result.getSearchResult().getProducts();
 
-        if(productEntities != null && !productEntities.isEmpty()) {
-            for (int i = 0; i < productEntities.size(); i++) {
-                products.add(new Product.Builder(productEntities.get(i)).build());
+        if (productEntities != null && !productEntities.isEmpty()) {
+            for (Item product : productEntities) {
+                products.add(new Product.Builder(product).build());
             }
         }
         return products;

@@ -16,11 +16,11 @@ public class GetProductsResponseEvent extends BaseResponseEvent<List<Product>> {
 
     private int callType;
 
-    public GetProductsResponseEvent(int callType){
+    public GetProductsResponseEvent(int callType) {
         this.callType = callType;
     }
 
-    public boolean isCategoryType(){
+    public boolean isCategoryType() {
         return callType == CATEGORY_TYPE;
     }
 }

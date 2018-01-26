@@ -10,7 +10,6 @@ import java.text.DecimalFormat;
 /**
  * Created by fran on 21/01/18.
  */
-
 public class Product implements Parcelable {
 
     private final String title;

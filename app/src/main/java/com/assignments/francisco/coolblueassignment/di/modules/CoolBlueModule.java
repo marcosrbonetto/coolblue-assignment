@@ -22,7 +22,6 @@ import retrofit2.converter.simplexml.SimpleXmlConverterFactory;
 /**
  * Created by fran on 21/01/18.
  */
-
 @Singleton
 @Module
 public class CoolBlueModule {
@@ -30,7 +29,7 @@ public class CoolBlueModule {
     private CoolBlueApplication application;
     public static final String HOST = "http://svcs.ebay.com/";
 
-    public CoolBlueModule(CoolBlueApplication application){
+    public CoolBlueModule(CoolBlueApplication application) {
         this.application = application;
     }
 
@@ -41,13 +40,13 @@ public class CoolBlueModule {
 
     @Singleton
     @Provides
-    Bus providesBus(){
+    Bus providesBus() {
         return new Bus();
     }
 
     @Singleton
     @Provides
-    ProductDataMapper providesProductDataMapper(){
+    ProductDataMapper providesProductDataMapper() {
         return new ProductDataMapper();
     }
 

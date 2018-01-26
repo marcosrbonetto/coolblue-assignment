@@ -17,7 +17,6 @@ import java.util.List;
 /**
  * Created by fran on 22/01/18.
  */
-
 public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ProductViewHolder> {
 
     private List<Product> products;
@@ -81,7 +80,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
         }
     }
 
-    public List<Product> getProducts(){
+    public List<Product> getProducts() {
         return this.products;
     }
 }

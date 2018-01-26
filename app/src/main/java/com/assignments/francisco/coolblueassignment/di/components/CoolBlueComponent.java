@@ -19,5 +19,4 @@ public interface CoolBlueComponent {
     void inject(ProductsFragment fragment);
 
     void inject(MainActivity mainActivity);
-
 }

@@ -2,6 +2,7 @@ package com.assignments.francisco.coolblueassignment.data.model.event;
 
 /**
  * Base event for http request.
+ *
  * @param <T> response type.
  */
 public abstract class BaseResponseEvent<T> {
@@ -55,14 +56,29 @@ public abstract class BaseResponseEvent<T> {
         return response != null;
     }
 
-    public boolean isSuccess(){
+    /**
+     * Validates if the call was successful or not by seeing if it has response and the response code is equals 200.
+     *
+     * @return true/false.
+     */
+    public boolean isSuccess() {
         return hasResponse() && code == 200;
     }
 
+    /**
+     * Get throwable of a failed call.
+     *
+     * @return throwable.
+     */
     public Throwable getThrowable() {
         return throwable;
     }
 
+    /**
+     * Set throwable of a failed call.
+     *
+     * @param throwable
+     */
     public void setThrowable(Throwable throwable) {
         this.throwable = throwable;
     }

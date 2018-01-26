@@ -22,5 +22,4 @@ public class GetProductsByCategory {
     public void execute() {
         findingApiClientImpl.getProductsByCategory();
     }
-
 }

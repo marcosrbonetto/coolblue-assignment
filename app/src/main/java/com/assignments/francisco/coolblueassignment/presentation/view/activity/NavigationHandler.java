@@ -8,5 +8,6 @@ public interface NavigationHandler {
 
     void navigateToAllProductsFragment();
 
+    //TODO navigate to new Fragment with details of a certain product.
 //    void navigateToProductDetails();
 }

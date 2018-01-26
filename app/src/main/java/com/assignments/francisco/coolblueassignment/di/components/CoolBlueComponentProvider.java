@@ -7,5 +7,4 @@ package com.assignments.francisco.coolblueassignment.di.components;
 public interface CoolBlueComponentProvider {
 
     CoolBlueComponent getCoolBlueComponent();
-
 }
