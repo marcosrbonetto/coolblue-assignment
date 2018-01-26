@@ -17,7 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.assignments.francisco.coolblueassignment.R;
-import com.assignments.francisco.coolblueassignment.di.components.CoolBlueComponentProvider;
+import com.assignments.francisco.coolblueassignment.presentation.di.components.CoolBlueComponentProvider;
 import com.assignments.francisco.coolblueassignment.domain.model.Product;
 import com.assignments.francisco.coolblueassignment.presentation.presenter.ProductsPresenter;
 import com.assignments.francisco.coolblueassignment.presentation.view.activity.MainActivity;

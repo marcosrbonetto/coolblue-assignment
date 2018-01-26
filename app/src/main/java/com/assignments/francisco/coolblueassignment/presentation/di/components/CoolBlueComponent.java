@@ -1,6 +1,7 @@
-package com.assignments.francisco.coolblueassignment.di.components;
+package com.assignments.francisco.coolblueassignment.presentation.di.components;
 
-import com.assignments.francisco.coolblueassignment.di.modules.CoolBlueModule;
+import com.assignments.francisco.coolblueassignment.data.di.CoolBlueDataModule;
+import com.assignments.francisco.coolblueassignment.presentation.di.modules.CoolBluePresentationModule;
 import com.assignments.francisco.coolblueassignment.presentation.view.activity.MainActivity;
 import com.assignments.francisco.coolblueassignment.presentation.view.fragment.ProductsFragment;
 
@@ -13,7 +14,7 @@ import dagger.Component;
  */
 
 @Singleton
-@Component(modules = CoolBlueModule.class)
+@Component(modules = {CoolBluePresentationModule.class, CoolBlueDataModule.class})
 public interface CoolBlueComponent {
 
     void inject(ProductsFragment fragment);

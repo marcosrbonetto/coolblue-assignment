@@ -1,8 +1,7 @@
-package com.assignments.francisco.coolblueassignment.di.modules;
+package com.assignments.francisco.coolblueassignment.data.di;
 
 import android.content.Context;
 
-import com.assignments.francisco.coolblueassignment.CoolBlueApplication;
 import com.assignments.francisco.coolblueassignment.data.api.FindingApiClient;
 import com.assignments.francisco.coolblueassignment.data.model.mapper.ProductDataMapper;
 import com.squareup.otto.Bus;
@@ -20,23 +19,13 @@ import retrofit2.Retrofit;
 import retrofit2.converter.simplexml.SimpleXmlConverterFactory;
 
 /**
- * Created by fran on 21/01/18.
+ * Created by f.visintini on 26/01/18.
  */
 @Singleton
 @Module
-public class CoolBlueModule {
+public class CoolBlueDataModule {
 
-    private CoolBlueApplication application;
     public static final String HOST = "http://svcs.ebay.com/";
-
-    public CoolBlueModule(CoolBlueApplication application) {
-        this.application = application;
-    }
-
-    @Provides
-    Context providesContext() {
-        return application.getApplicationContext();
-    }
 
     @Singleton
     @Provides

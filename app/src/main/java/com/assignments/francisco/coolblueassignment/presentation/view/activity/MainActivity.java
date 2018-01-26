@@ -9,7 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.assignments.francisco.coolblueassignment.R;
-import com.assignments.francisco.coolblueassignment.di.components.CoolBlueComponentProvider;
+import com.assignments.francisco.coolblueassignment.presentation.di.components.CoolBlueComponentProvider;
 import com.assignments.francisco.coolblueassignment.presentation.view.fragment.ProductsFragment;
 import com.squareup.otto.Bus;
 
