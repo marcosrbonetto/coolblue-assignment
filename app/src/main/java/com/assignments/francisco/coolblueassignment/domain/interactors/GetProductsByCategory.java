@@ -5,10 +5,14 @@ import com.assignments.francisco.coolblueassignment.data.api.FindingApiClientImp
 import javax.inject.Inject;
 
 /**
- * Created by fran on 22/01/18.
+ * Interactor responsable of retrieving products by category from data layer.
+ *
+ * @author Francisco Visintini
  */
 public class GetProductsByCategory {
 
+    //TODO This is not entirely accurate. Should have a Repository pattern that isolate data sources from interactors maybe with a Repository
+    // Factory deciding whats best to use.
     private FindingApiClientImpl findingApiClientImpl;
 
     @Inject

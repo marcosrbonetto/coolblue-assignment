@@ -11,7 +11,9 @@ import dagger.Module;
 import dagger.Provides;
 
 /**
- * Created by fran on 21/01/18.
+ * Presentation layer DI module.
+ *
+ * @author Francisco Visintini
  */
 @Singleton
 @Module

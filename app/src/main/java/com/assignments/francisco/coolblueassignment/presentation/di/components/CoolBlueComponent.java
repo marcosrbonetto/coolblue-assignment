@@ -10,9 +10,10 @@ import javax.inject.Singleton;
 import dagger.Component;
 
 /**
- * Created by fran on 21/01/18.
+ * Application DI component.
+ *
+ * @author Francisco Visintini
  */
-
 @Singleton
 @Component(modules = {CoolBluePresentationModule.class, CoolBlueDataModule.class})
 public interface CoolBlueComponent {

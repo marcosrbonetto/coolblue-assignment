@@ -9,7 +9,9 @@ import com.assignments.francisco.coolblueassignment.presentation.di.components.D
 import com.assignments.francisco.coolblueassignment.presentation.di.modules.CoolBluePresentationModule;
 
 /**
- * Created by fran on 21/01/18.
+ * Cool blue application.
+ *
+ * @author Francisco Visintini
  */
 public class CoolBlueApplication extends Application implements CoolBlueComponentProvider {
 

@@ -11,6 +11,8 @@ import static com.assignments.francisco.coolblueassignment.data.model.event.GetP
 
 /**
  * API client to use with ebay finding API.
+ *
+ * @author Francisco Visintini
  */
 public class FindingApiClientImpl {
     public static final int DEFAULT_PRODUCTS_CATEGORY = 9355;//Cell Phones & Smartphones category.

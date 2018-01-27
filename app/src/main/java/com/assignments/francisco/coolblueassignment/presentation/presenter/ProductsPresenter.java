@@ -14,12 +14,14 @@ import java.util.List;
 import javax.inject.Inject;
 
 /**
- * Created by fran on 22/01/18.
+ * Products presenter.
+ *
+ * @author Francisco Visintini
  */
 public class ProductsPresenter {
 
     //TODO This shouldn't be like this. I should get all ebay categories and use them in the app.
-    private static final String DEFAULT_CATEGORY = "Cellphones & Smartphones";
+    public static final String DEFAULT_CATEGORY = "Cellphones & Smartphones";
 
     private GetProductsByCategory getProductsByCategory;
     private GetProductsByKeywords getProductsByKeywords;
@@ -63,8 +65,10 @@ public class ProductsPresenter {
      * Get products according to default category.
      */
     public void getProductsByCategory() {
-        view.showLoadingScreen();
-        getProductsByCategory.execute();
+        if (view != null) {
+            view.showLoadingScreen();
+            getProductsByCategory.execute();
+        }
     }
 
     @Subscribe

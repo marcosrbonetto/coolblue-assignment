@@ -99,7 +99,7 @@ public class ProductsFragment extends Fragment implements ProductsView {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ((CoolBlueComponentProvider) getContext().getApplicationContext()).getCoolBlueComponent().inject(this);
+        ((CoolBlueComponentProvider) getActivity().getApplicationContext()).getCoolBlueComponent().inject(this);
     }
 
     @Override
@@ -108,9 +108,9 @@ public class ProductsFragment extends Fragment implements ProductsView {
         View parent = inflater.inflate(R.layout.fragment_products, container, false);
         ButterKnife.bind(this, parent);
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         productsRecycler.setLayoutManager(layoutManager);
-        productsRecycler.addItemDecoration(new DividerItemDecoration(getContext(), layoutManager.getOrientation()));
+        productsRecycler.addItemDecoration(new DividerItemDecoration(getActivity(), layoutManager.getOrientation()));
 
         setupClickInSearchButton();
         return parent;
@@ -242,7 +242,7 @@ public class ProductsFragment extends Fragment implements ProductsView {
     }
 
     private void setAdapterRecycler(List<Product> products) {
-        productsAdapter = new ProductsAdapter(products, getContext());
+        productsAdapter = new ProductsAdapter(products, getActivity());
         productsRecycler.setAdapter(productsAdapter);
     }
 
@@ -261,23 +261,23 @@ public class ProductsFragment extends Fragment implements ProductsView {
 
     @Override
     public void showPriceFilterError() {
-        Toast.makeText(getContext(), R.string.price_filter_error, Toast.LENGTH_LONG).show();
+        Toast.makeText(getActivity(), R.string.price_filter_error, Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void showMaxLowerThanMinPriceFilterError() {
-        Toast.makeText(getContext(), R.string.max_lower_than_min_price_filter_error, Toast.LENGTH_LONG).show();
+        Toast.makeText(getActivity(), R.string.max_lower_than_min_price_filter_error, Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void showEmptyKeywordsError() {
-        Toast.makeText(getContext(), R.string.search_box_empty_error, Toast.LENGTH_LONG).show();
+        Toast.makeText(getActivity(), R.string.search_box_empty_error, Toast.LENGTH_LONG).show();
     }
 
     private void hideKeyBoard() {
         try {
             InputMethodManager inputManager =
-                    (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
             inputManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(),
                     InputMethodManager.HIDE_NOT_ALWAYS);
         } catch(NullPointerException npe){

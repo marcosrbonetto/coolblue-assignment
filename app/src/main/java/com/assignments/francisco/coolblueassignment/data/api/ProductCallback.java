@@ -10,8 +10,10 @@ import retrofit2.Response;
 
 /**
  * Handler for HTTP response and performing events.
+ *
+ * @author Francisco Visintini
  */
-public final class ProductCallback implements Callback<ProductsResponse> {
+public class ProductCallback implements Callback<ProductsResponse> {
 
     private BaseResponseEvent baseResponseEvent;
     private Bus bus;

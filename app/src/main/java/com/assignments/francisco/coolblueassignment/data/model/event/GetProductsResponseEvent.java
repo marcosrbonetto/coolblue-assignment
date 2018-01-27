@@ -1,15 +1,12 @@
 package com.assignments.francisco.coolblueassignment.data.model.event;
 
-
-import com.assignments.francisco.coolblueassignment.data.model.Item;
 import com.assignments.francisco.coolblueassignment.data.model.ProductsResponse;
-
-import java.util.List;
 
 /**
  * EventBus event to send for getProductsByCategory UC.
+ *
+ * @author Francisco Visintini
  */
-
 public class GetProductsResponseEvent extends BaseResponseEvent<ProductsResponse> {
 
     public static final int CATEGORY_TYPE = 7;
@@ -21,6 +18,11 @@ public class GetProductsResponseEvent extends BaseResponseEvent<ProductsResponse
         this.callType = callType;
     }
 
+    /**
+     * Validates if the event is for a category call.
+     *
+     * @return true if it is a category event, false otherwise.
+     */
     public boolean isCategoryType() {
         return callType == CATEGORY_TYPE;
     }

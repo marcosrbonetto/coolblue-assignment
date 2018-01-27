@@ -5,7 +5,9 @@ import org.simpleframework.xml.Root;
 import org.simpleframework.xml.Text;
 
 /**
- * Created by fran on 23/01/18.
+ * CurrentPrice model class for ebay products response.
+ *
+ * @author Francisco Visintini
  */
 @Root(name = "currentPrice", strict = false)
 public class CurrentPrice {

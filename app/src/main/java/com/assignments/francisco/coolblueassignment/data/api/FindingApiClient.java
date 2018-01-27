@@ -8,6 +8,8 @@ import retrofit2.http.Query;
 
 /**
  * Ebay finding API client interface. Contains all calls made to that endpoint.
+ *
+ * @author Francisco Visintini
  */
 public interface FindingApiClient {
 

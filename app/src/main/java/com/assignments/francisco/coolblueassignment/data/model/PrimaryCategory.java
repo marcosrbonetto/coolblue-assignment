@@ -4,7 +4,9 @@ import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
 /**
- * Created by fran on 23/01/18.
+ * PrimaryCategory model class for ebay products response.
+ *
+ * @author Francisco Visintini
  */
 @Root(name = "primaryCategory", strict = false)
 public class PrimaryCategory {

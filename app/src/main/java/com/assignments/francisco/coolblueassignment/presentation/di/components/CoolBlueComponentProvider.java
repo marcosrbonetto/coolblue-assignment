@@ -1,9 +1,10 @@
 package com.assignments.francisco.coolblueassignment.presentation.di.components;
 
 /**
- * Created by fran on 22/01/18.
+ * Application DI component provider interface.
+ *
+ * @author Francisco Visintini
  */
-
 public interface CoolBlueComponentProvider {
 
     CoolBlueComponent getCoolBlueComponent();

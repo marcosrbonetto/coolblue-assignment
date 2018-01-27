@@ -8,7 +8,9 @@ import com.assignments.francisco.coolblueassignment.data.model.Item;
 import java.text.DecimalFormat;
 
 /**
- * Created by fran on 27/01/18.
+ * Product UI model.
+ *
+ * @author Francisco Visintini
  */
 public class Product implements Parcelable {
 

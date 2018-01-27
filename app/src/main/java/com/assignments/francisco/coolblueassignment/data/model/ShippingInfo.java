@@ -4,7 +4,9 @@ import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
 /**
- * Created by fran on 23/01/18.
+ * ShippingInfo model class for ebay products response.
+ *
+ * @author Francisco Visintini
  */
 @Root(name = "shippingInfo", strict = false)
 public class ShippingInfo {

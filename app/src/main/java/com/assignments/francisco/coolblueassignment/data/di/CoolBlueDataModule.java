@@ -1,9 +1,6 @@
 package com.assignments.francisco.coolblueassignment.data.di;
 
-import android.content.Context;
-
 import com.assignments.francisco.coolblueassignment.data.api.FindingApiClient;
-import com.assignments.francisco.coolblueassignment.presentation.presenter.mapper.ProductDataMapper;
 import com.squareup.otto.Bus;
 
 import org.simpleframework.xml.core.Persister;
@@ -19,7 +16,9 @@ import retrofit2.Retrofit;
 import retrofit2.converter.simplexml.SimpleXmlConverterFactory;
 
 /**
- * Created by f.visintini on 26/01/18.
+ * Data layer DI module.
+ *
+ * @author Francisco Visintini
  */
 @Singleton
 @Module

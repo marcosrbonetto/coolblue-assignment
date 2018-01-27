@@ -4,7 +4,9 @@ import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
 /**
- * Created by fran on 23/01/18.
+ * Response model class for ebay products response.
+ *
+ * @author Francisco Visintini
  */
 @Root(strict = false)
 public class ProductsResponse {
@@ -14,5 +16,9 @@ public class ProductsResponse {
 
     public SearchResult getSearchResult() {
         return searchResult;
+    }
+
+    public void setSearchResult(SearchResult searchResult) {
+        this.searchResult = searchResult;
     }
 }

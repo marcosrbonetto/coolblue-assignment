@@ -4,9 +4,10 @@ import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
 /**
- * Created by fran on 23/01/18.
+ * Item model class for ebay products response.
+ *
+ * @author Francisco Visintini
  */
-
 @Root(name = "item", strict = false)
 public class Item {
 

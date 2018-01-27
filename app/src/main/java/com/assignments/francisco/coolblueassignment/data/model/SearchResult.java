@@ -7,7 +7,9 @@ import org.simpleframework.xml.Root;
 import java.util.ArrayList;
 
 /**
- * Created by fran on 23/01/18.
+ * SearchResult model class for ebay products response.
+ *
+ * @author Francisco Visintini
  */
 @Root(name = "searchResult", strict = false)
 public class SearchResult {

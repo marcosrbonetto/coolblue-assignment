@@ -8,7 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by fran on 22/01/18.
+ * Mapper in charge of transforming Data layer product models to UI layer product models.
+ *
+ * @author Francisco Visintini
  */
 public class ProductDataMapper {
 

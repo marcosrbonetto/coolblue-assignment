@@ -4,6 +4,8 @@ package com.assignments.francisco.coolblueassignment.data.model.event;
  * Base event for http request.
  *
  * @param <T> response type.
+ *
+ * @author Francisco Visintini
  */
 public abstract class BaseResponseEvent<T> {
 
