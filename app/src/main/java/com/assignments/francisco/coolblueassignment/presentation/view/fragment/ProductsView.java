@@ -1,6 +1,6 @@
 package com.assignments.francisco.coolblueassignment.presentation.view.fragment;
 
-import com.assignments.francisco.coolblueassignment.domain.model.Product;
+import com.assignments.francisco.coolblueassignment.presentation.model.Product;
 
 import java.util.List;
 

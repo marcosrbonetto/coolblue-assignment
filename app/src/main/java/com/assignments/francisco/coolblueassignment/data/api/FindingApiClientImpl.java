@@ -1,7 +1,6 @@
 package com.assignments.francisco.coolblueassignment.data.api;
 
 import com.assignments.francisco.coolblueassignment.data.model.event.GetProductsResponseEvent;
-import com.assignments.francisco.coolblueassignment.data.model.mapper.ProductDataMapper;
 import com.squareup.otto.Bus;
 
 import javax.inject.Inject;
@@ -21,13 +20,11 @@ public class FindingApiClientImpl {
 
     private Bus bus;
     private FindingApiClient findingApiClient;
-    private ProductDataMapper productDataMapper;
 
     @Inject
-    public FindingApiClientImpl(FindingApiClient findingApiClient, Bus bus, ProductDataMapper productDataMapper) {
+    public FindingApiClientImpl(FindingApiClient findingApiClient, Bus bus) {
         this.findingApiClient = findingApiClient;
         this.bus = bus;
-        this.productDataMapper = productDataMapper;
     }
 
     /**
@@ -39,7 +36,7 @@ public class FindingApiClientImpl {
         // one he would like to visualize.
 
         findingApiClient.getProductsByCategory(DEFAULT_GLOBAL_ID, DEFAULT_PRODUCTS_CATEGORY)
-                        .enqueue(new ProductCallback(new GetProductsResponseEvent(CATEGORY_TYPE), bus, productDataMapper));
+                        .enqueue(new ProductCallback(new GetProductsResponseEvent(CATEGORY_TYPE), bus));
     }
 
     /**
@@ -49,7 +46,7 @@ public class FindingApiClientImpl {
      */
     public void getProductsByKeywords(String keywords) {
         findingApiClient.getProductsByKeywords(DEFAULT_GLOBAL_ID, keywords)
-                        .enqueue(new ProductCallback(new GetProductsResponseEvent(KEYWORDS_TYPE), bus, productDataMapper));
+                        .enqueue(new ProductCallback(new GetProductsResponseEvent(KEYWORDS_TYPE), bus));
     }
 
     /**
@@ -59,6 +56,6 @@ public class FindingApiClientImpl {
      */
     public void getProductsByKeywords(String keywords, String minPrice, String maxPrice) {
         findingApiClient.getProductsByKeywords(DEFAULT_GLOBAL_ID, keywords, MIN_PRICE_FILTER, minPrice, MAX_PRICE_FILTER, maxPrice)
-                        .enqueue(new ProductCallback(new GetProductsResponseEvent(KEYWORDS_TYPE), bus, productDataMapper));
+                        .enqueue(new ProductCallback(new GetProductsResponseEvent(KEYWORDS_TYPE), bus));
     }
 }

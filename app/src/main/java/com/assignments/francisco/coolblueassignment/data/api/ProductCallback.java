@@ -2,11 +2,7 @@ package com.assignments.francisco.coolblueassignment.data.api;
 
 import com.assignments.francisco.coolblueassignment.data.model.ProductsResponse;
 import com.assignments.francisco.coolblueassignment.data.model.event.BaseResponseEvent;
-import com.assignments.francisco.coolblueassignment.data.model.mapper.ProductDataMapper;
-import com.assignments.francisco.coolblueassignment.domain.model.Product;
 import com.squareup.otto.Bus;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -19,24 +15,21 @@ public final class ProductCallback implements Callback<ProductsResponse> {
 
     private BaseResponseEvent baseResponseEvent;
     private Bus bus;
-    private ProductDataMapper productDataMapper;
 
-    public ProductCallback(BaseResponseEvent baseResponseEvent, Bus bus, ProductDataMapper productDataMapper) {
+    public ProductCallback(BaseResponseEvent baseResponseEvent, Bus bus) {
         this.baseResponseEvent = baseResponseEvent;
         this.bus = bus;
-        this.productDataMapper = productDataMapper;
     }
 
     @Override
-    public void onResponse(Call call, Response response) {
-        List<Product> productList = productDataMapper.transformProductEntities((ProductsResponse) response.body());
+    public void onResponse(Call<ProductsResponse> call, Response<ProductsResponse> response) {
+        baseResponseEvent.setResponse(response.body());
         baseResponseEvent.setCode(response.code());
-        baseResponseEvent.setResponse(productList);
         bus.post(baseResponseEvent);
     }
 
     @Override
-    public void onFailure(Call call, Throwable t) {
+    public void onFailure(Call<ProductsResponse> call, Throwable t) {
         baseResponseEvent.setThrowable(t);
         bus.post(baseResponseEvent);
     }

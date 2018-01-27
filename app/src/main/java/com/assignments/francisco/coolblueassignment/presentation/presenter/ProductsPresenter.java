@@ -3,9 +3,13 @@ package com.assignments.francisco.coolblueassignment.presentation.presenter;
 import com.assignments.francisco.coolblueassignment.data.model.event.GetProductsResponseEvent;
 import com.assignments.francisco.coolblueassignment.domain.interactors.GetProductsByCategory;
 import com.assignments.francisco.coolblueassignment.domain.interactors.GetProductsByKeywords;
+import com.assignments.francisco.coolblueassignment.presentation.model.Product;
+import com.assignments.francisco.coolblueassignment.presentation.presenter.mapper.ProductDataMapper;
 import com.assignments.francisco.coolblueassignment.presentation.view.fragment.ProductsView;
 import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -21,12 +25,15 @@ public class ProductsPresenter {
     private GetProductsByKeywords getProductsByKeywords;
     private ProductsView view;
     private Bus bus;
+    private ProductDataMapper productDataMapper;
 
     @Inject
-    public ProductsPresenter(Bus bus, GetProductsByCategory getProductsByCategory, GetProductsByKeywords getProductsByKeywords) {
+    public ProductsPresenter(Bus bus, GetProductsByCategory getProductsByCategory, GetProductsByKeywords getProductsByKeywords,
+            ProductDataMapper productDataMapper) {
         this.bus = bus;
         this.getProductsByCategory = getProductsByCategory;
         this.getProductsByKeywords = getProductsByKeywords;
+        this.productDataMapper = productDataMapper;
     }
 
     /**
@@ -63,19 +70,25 @@ public class ProductsPresenter {
     @Subscribe
     public void onGetProductsEvent(GetProductsResponseEvent event) {
         if (view != null) {
-            if (event.isSuccess()) {
-                int productsCount = event.getResponse().size();
+            if (!event.isSuccess()) {
+                view.showErrorScreen();
+                return;
+            }
+
+            try {
+                List<Product> productList = productDataMapper.transformProductEntities(event.getResponse());
+                int productsCount = productList.size();
                 if (productsCount == 0) {
                     view.showEmptyScreen();
                 } else {
-                    view.showProducts(event.getResponse());
+                    view.showProducts(productList);
                     if (event.isCategoryType()) {
                         view.setShowingProductsLabelForCategory(DEFAULT_CATEGORY);
                     } else {
                         view.setShowingProductsLabelForSearch(productsCount);
                     }
                 }
-            } else {
+            } catch (NullPointerException npe) {
                 view.showErrorScreen();
             }
         }

@@ -3,7 +3,7 @@ package com.assignments.francisco.coolblueassignment.data.di;
 import android.content.Context;
 
 import com.assignments.francisco.coolblueassignment.data.api.FindingApiClient;
-import com.assignments.francisco.coolblueassignment.data.model.mapper.ProductDataMapper;
+import com.assignments.francisco.coolblueassignment.presentation.presenter.mapper.ProductDataMapper;
 import com.squareup.otto.Bus;
 
 import org.simpleframework.xml.core.Persister;
@@ -31,12 +31,6 @@ public class CoolBlueDataModule {
     @Provides
     Bus providesBus() {
         return new Bus();
-    }
-
-    @Singleton
-    @Provides
-    ProductDataMapper providesProductDataMapper() {
-        return new ProductDataMapper();
     }
 
     @Singleton

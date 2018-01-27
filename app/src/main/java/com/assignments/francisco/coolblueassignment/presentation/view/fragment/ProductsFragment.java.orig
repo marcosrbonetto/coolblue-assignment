@@ -17,8 +17,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.assignments.francisco.coolblueassignment.R;
+<<<<<<< Updated upstream
 import com.assignments.francisco.coolblueassignment.presentation.di.components.CoolBlueComponentProvider;
+import com.assignments.francisco.coolblueassignment.domain.model.Product;
+=======
+import com.assignments.francisco.coolblueassignment.di.components.CoolBlueComponentProvider;
 import com.assignments.francisco.coolblueassignment.presentation.model.Product;
+>>>>>>> Stashed changes
 import com.assignments.francisco.coolblueassignment.presentation.presenter.ProductsPresenter;
 import com.assignments.francisco.coolblueassignment.presentation.view.activity.MainActivity;
 import com.assignments.francisco.coolblueassignment.presentation.view.adapter.ProductsAdapter;
@@ -275,13 +280,9 @@ public class ProductsFragment extends Fragment implements ProductsView {
     }
 
     private void hideKeyBoard() {
-        try {
-            InputMethodManager inputManager =
-                    (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-            inputManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(),
-                    InputMethodManager.HIDE_NOT_ALWAYS);
-        } catch(NullPointerException npe){
-            //DO NOTHING
-        }
+        InputMethodManager inputManager =
+                (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(),
+                InputMethodManager.HIDE_NOT_ALWAYS);
     }
 }

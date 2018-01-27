@@ -1,4 +1,4 @@
-package com.assignments.francisco.coolblueassignment.domain.model;
+package com.assignments.francisco.coolblueassignment.presentation.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -8,7 +8,7 @@ import com.assignments.francisco.coolblueassignment.data.model.Item;
 import java.text.DecimalFormat;
 
 /**
- * Created by fran on 21/01/18.
+ * Created by fran on 27/01/18.
  */
 public class Product implements Parcelable {
 
@@ -16,7 +16,7 @@ public class Product implements Parcelable {
     private final String imageUrl;
     private final String price;
 
-    public Product(Builder builder) {
+    public Product(Product.Builder builder) {
         this.title = builder.title;
         this.imageUrl = builder.imageUrl;
         this.price = builder.price;

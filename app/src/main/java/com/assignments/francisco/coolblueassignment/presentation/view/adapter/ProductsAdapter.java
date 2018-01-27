@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.assignments.francisco.coolblueassignment.R;
-import com.assignments.francisco.coolblueassignment.domain.model.Product;
+import com.assignments.francisco.coolblueassignment.presentation.model.Product;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;

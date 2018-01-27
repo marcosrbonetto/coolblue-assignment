@@ -1,5 +1,6 @@
 package com.assignments.francisco.coolblueassignment.data.model;
 
+import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
@@ -11,6 +12,9 @@ import java.util.ArrayList;
 @Root(name = "searchResult", strict = false)
 public class SearchResult {
 
+    @Attribute(name = "count")
+    private String count;
+
     @ElementList(entry = "item", required = false, inline = true)
     private ArrayList<Item> products;
 
@@ -20,5 +24,13 @@ public class SearchResult {
 
     public void setProducts(ArrayList<Item> item) {
         this.products = item;
+    }
+
+    public String getCount() {
+        return count;
+    }
+
+    public void setCount(String count) {
+        this.count = count;
     }
 }

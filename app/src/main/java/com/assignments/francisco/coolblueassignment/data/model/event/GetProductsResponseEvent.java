@@ -1,7 +1,8 @@
 package com.assignments.francisco.coolblueassignment.data.model.event;
 
 
-import com.assignments.francisco.coolblueassignment.domain.model.Product;
+import com.assignments.francisco.coolblueassignment.data.model.Item;
+import com.assignments.francisco.coolblueassignment.data.model.ProductsResponse;
 
 import java.util.List;
 
@@ -9,7 +10,7 @@ import java.util.List;
  * EventBus event to send for getProductsByCategory UC.
  */
 
-public class GetProductsResponseEvent extends BaseResponseEvent<List<Product>> {
+public class GetProductsResponseEvent extends BaseResponseEvent<ProductsResponse> {
 
     public static final int CATEGORY_TYPE = 7;
     public static final int KEYWORDS_TYPE = 77;
