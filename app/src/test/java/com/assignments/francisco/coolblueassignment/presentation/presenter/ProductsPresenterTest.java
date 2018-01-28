@@ -18,6 +18,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.assignments.francisco.coolblueassignment.presentation.presenter.ProductsPresenter.DEFAULT_CATEGORY;
+import static com.assignments.francisco.coolblueassignment.utils.Constant.EMPTY_KEYWORDS;
+import static com.assignments.francisco.coolblueassignment.utils.Constant.KEYWORDS;
+import static com.assignments.francisco.coolblueassignment.utils.Constant.MAX_PRICE_FILTER;
+import static com.assignments.francisco.coolblueassignment.utils.Constant.MAX_PRICE_FILTER_MALFORMED;
+import static com.assignments.francisco.coolblueassignment.utils.Constant.MIN_PRICE_FILTER;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
@@ -33,11 +38,6 @@ import static org.mockito.Mockito.when;
  * @author Francisco Visintini
  */
 public class ProductsPresenterTest {
-    private static final String EMPTY_KEYWORDS = "";
-    private static final String VALID_KEYWORDS = "Valid keywords";
-    private static final String MAX_PRICE_FILTER = "10.10";
-    private static final String MAX_PRICE_FILTER_MALFORMED = "MALFORMED";
-    private static final String MIN_PRICE_FILTER = "1.10";
 
     @Mock
     private GetProductsByCategory getProductsByCategory;
@@ -240,21 +240,21 @@ public class ProductsPresenterTest {
 
     @Test
     public void getProductsByKeywords_withKeywordsAndEmptyFilters_shouldShowLoadingScreenAndExecuteGetProductsByKeywordsInteractor() {
-        productsPresenter.getProductsByKeywords(VALID_KEYWORDS, "", "");
+        productsPresenter.getProductsByKeywords(KEYWORDS, "", "");
         verify(view).showLoadingScreen();
-        verify(getProductsByKeywords).execute(VALID_KEYWORDS);
+        verify(getProductsByKeywords).execute(KEYWORDS);
     }
 
     @Test
     public void getProductsByKeywords_withKeywordsAndWellFormedFilters_shouldShowLoadingScreenAndExecuteGetProductsByKeywordsInteractorWithFilters() {
-        productsPresenter.getProductsByKeywords(VALID_KEYWORDS, MIN_PRICE_FILTER, MAX_PRICE_FILTER);
+        productsPresenter.getProductsByKeywords(KEYWORDS, MIN_PRICE_FILTER, MAX_PRICE_FILTER);
         verify(view).showLoadingScreen();
-        verify(getProductsByKeywords).execute(VALID_KEYWORDS, MIN_PRICE_FILTER, MAX_PRICE_FILTER);
+        verify(getProductsByKeywords).execute(KEYWORDS, MIN_PRICE_FILTER, MAX_PRICE_FILTER);
     }
 
     @Test
     public void getProductsByKeywords_withKeywordsAndMalformedFilters_shouldShowPriceFilterError() {
-        productsPresenter.getProductsByKeywords(VALID_KEYWORDS, MIN_PRICE_FILTER, MAX_PRICE_FILTER_MALFORMED);
+        productsPresenter.getProductsByKeywords(KEYWORDS, MIN_PRICE_FILTER, MAX_PRICE_FILTER_MALFORMED);
         verify(view).showPriceFilterError();
         verifyZeroInteractions(getProductsByKeywords);
     }

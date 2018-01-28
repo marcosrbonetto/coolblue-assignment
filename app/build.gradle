@@ -1,11 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 27
+
+    compileSdkVersion rootProject.ext.compileSdkVersion
+
     defaultConfig {
         applicationId "com.assignments.francisco.coolblueassignment"
-        minSdkVersion 21
-        targetSdkVersion 27
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -19,25 +21,33 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:27.0.2'
+    compile fileTree(include: ['*.jar'], dir: 'libs')
 
-    compile 'com.google.dagger:dagger:2.14.1'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.android.support:design:27.0.2'
-    annotationProcessor 'com.google.dagger:dagger-compiler:2.14.1'
-    compile 'com.google.code.gson:gson:2.8.2'
-    compile 'com.squareup.retrofit2:retrofit:2.3.0'
-    compile 'com.squareup:otto:1.3.8'
-    compile 'com.squareup.picasso:picasso:2.5.2'
-    compile 'com.jakewharton:butterknife:8.8.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
-    compile "com.android.support:recyclerview-v7:27.0.2"
-    compile 'com.squareup.retrofit2:converter-simplexml:2.3.0'
-    compile 'com.qintong:insLoadingAnimation:1.1.0'
+    // App dependencies
+    implementation "com.android.support:appcompat-v7:$rootProject.ext.supportLibraryVersion"
+    implementation "com.android.support:recyclerview-v7:$rootProject.ext.supportLibraryVersion"
+    implementation "com.android.support:design:$rootProject.ext.supportLibraryVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.ext.butterknifeVersion"
+    implementation "com.jakewharton:butterknife:$rootProject.ext.butterknifeVersion"
+    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.ext.daggerVersion"
+    implementation "com.google.dagger:dagger:$rootProject.ext.daggerVersion"
+    implementation "com.android.support.constraint:constraint-layout:$rootProject.ext.constraintLayoutVersion"
+    implementation "com.google.code.gson:gson:$rootProject.ext.gsonVersion"
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-simplexml:$rootProject.ext.retrofitVersion"
+    implementation "com.squareup:otto:$rootProject.ext.eventbusVersion"
+    implementation "com.squareup.picasso:picasso:$rootProject.ext.picassoVersion"
+    implementation "com.qintong:insLoadingAnimation:$rootProject.ext.loadingAnimationVersion"
 
-    testImplementation 'junit:junit:4.12'
+    // Unit Testing dependencies
+    testCompile "junit:junit:$rootProject.ext.junitVersion"
+    testCompile "org.mockito:mockito-core:$rootProject.ext.mockitoVersion"
 
-    testCompile "org.mockito:mockito-core:2.+"
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    // Android Testing Support Library's dependencies
+    androidTestImplementation "com.android.support:support-annotations:$rootProject.ext.supportLibraryVersion"
+    androidTestImplementation "com.android.support.test:runner:$rootProject.ext.supportLibraryTestVersion"
+    androidTestImplementation "com.android.support.test:rules:$rootProject.ext.supportLibraryTestVersion"
+
+    // UI Testing dependencies
+    testCompile "com.android.support.test.espresso:espresso-core:$rootProject.ext.espressoVersion"
 }

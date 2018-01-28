@@ -35,7 +35,8 @@ public class FindingApiClientImpl {
     public void getProductsByCategory() {
         //TODO Using default category. This is not the best approach.
         // Should be asking for ebay categories to show them and let the user choose which
-        // one he would like to visualize.
+        // one he would like to visualize. And maybe we also could have an Injected Factory that
+        // creates appropiate ProductCallbacks
 
         findingApiClient.getProductsByCategory(DEFAULT_GLOBAL_ID, DEFAULT_PRODUCTS_CATEGORY)
                         .enqueue(new ProductCallback(new GetProductsResponseEvent(CATEGORY_TYPE), bus));
