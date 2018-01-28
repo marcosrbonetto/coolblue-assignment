@@ -12,7 +12,7 @@
     <string name="filter_title">filter</string>
     <string name="filter_button">Apply</string>
     <string name="price_filter_label_default">Price filter:</string>
-    <string name="price_filter_error">Please complete both price filters</string>
+    <string name="price_filter_error">Please check your filters. Both are required and minimum can\'t be higher than maximum</string>
     <string name="minimum_price_hint">"Minimum price "</string>
     <string name="maximum_price_hint">"Maximum price"</string>
     <string name="zero">0</string>

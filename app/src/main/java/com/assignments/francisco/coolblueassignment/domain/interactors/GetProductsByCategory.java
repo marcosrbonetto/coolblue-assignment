@@ -5,7 +5,7 @@ import com.assignments.francisco.coolblueassignment.data.api.FindingApiClientImp
 import javax.inject.Inject;
 
 /**
- * Interactor responsable of retrieving products by category from data layer.
+ * Interactor responsible of retrieving products by category from data layer.
  *
  * @author Francisco Visintini
  */

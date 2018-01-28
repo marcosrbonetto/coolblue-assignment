@@ -5,7 +5,9 @@ import com.assignments.francisco.coolblueassignment.presentation.model.Product;
 import java.util.List;
 
 /**
- * Created by fran on 24/01/18.
+ * Products fragment view.
+ *
+ * @author Francisco Visintini
  */
 public interface ProductsView {
 
@@ -22,8 +24,6 @@ public interface ProductsView {
     void setShowingProductsLabelForCategory(String category);
 
     void showPriceFilterError();
-
-    void showMaxLowerThanMinPriceFilterError();
 
     void showEmptyKeywordsError();
 }

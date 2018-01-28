@@ -71,6 +71,11 @@ public class ProductsPresenter {
         }
     }
 
+    /**
+     * Event bus subscribing method that catches a response event when retrieving products and depending on results interacts with the view.
+     *
+     * @param event response event.
+     */
     @Subscribe
     public void onGetProductsEvent(GetProductsResponseEvent event) {
         if (view != null) {
@@ -98,6 +103,13 @@ public class ProductsPresenter {
         }
     }
 
+    /**
+     * Calls corresponding interactor to retrieve products by keywords with or without price filters.
+     *
+     * @param keywords keywords for product searching
+     * @param minPrice minimum price filter
+     * @param maxPrice maximum price filter
+     */
     public void getProductsByKeywords(String keywords, String minPrice, String maxPrice) {
         if (view != null) {
             if (keywords == null || keywords.isEmpty()) {

@@ -34,13 +34,13 @@ public class SearchProductsScreenTest {
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 
     @Test
-    public void searchProducts_shouldShowDefaultCategoryProducts(){
+    public void searchProducts_shouldShowDefaultCategoryProducts() {
         onView(withId(R.id.showing_items_label)).check(matches(withText(Copy.DEFAULT_SHOWING_ITEMS_LABEL)));
         onView(withId(R.id.products_recycler)).check(matches(isDisplayed()));
     }
 
     @Test
-    public void searchProducts_withKeywords_shouldShowProducts(){
+    public void searchProducts_withKeywords_shouldShowProducts() {
         //ACTIONS
         onView(withId(R.id.search_box)).perform(typeText(Copy.MOCKED_SEARCH_TEXT), closeSoftKeyboard());
         onView(withId(R.id.search_button)).perform(click());
@@ -51,7 +51,7 @@ public class SearchProductsScreenTest {
     }
 
     @Test
-    public void searchProducts_withKeywordsAndFilters_shouldShowProductsAndHideFilters(){
+    public void searchProducts_withKeywordsAndFilters_shouldShowProductsAndHideFilters() {
         //ACTIONS
         onView(withId(R.id.search_box)).perform(typeText(Copy.MOCKED_SEARCH_TEXT), closeSoftKeyboard());
         onView(withId(R.id.toolbar_filter)).perform(click());

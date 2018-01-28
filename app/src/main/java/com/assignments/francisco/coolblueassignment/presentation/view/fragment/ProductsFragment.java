@@ -265,11 +265,6 @@ public class ProductsFragment extends Fragment implements ProductsView {
     }
 
     @Override
-    public void showMaxLowerThanMinPriceFilterError() {
-        Toast.makeText(getActivity(), R.string.max_lower_than_min_price_filter_error, Toast.LENGTH_LONG).show();
-    }
-
-    @Override
     public void showEmptyKeywordsError() {
         Toast.makeText(getActivity(), R.string.search_box_empty_error, Toast.LENGTH_LONG).show();
     }
@@ -280,7 +275,7 @@ public class ProductsFragment extends Fragment implements ProductsView {
                     (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
             inputManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(),
                     InputMethodManager.HIDE_NOT_ALWAYS);
-        } catch(NullPointerException npe){
+        } catch (NullPointerException npe) {
             //DO NOTHING
         }
     }

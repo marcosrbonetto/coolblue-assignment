@@ -14,9 +14,10 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 /**
- * Created by fran on 27/01/18.
+ * Unit tests constants util class.
+ *
+ * @author Francisco Visintini
  */
-
 public class Constant {
     public static final String EMPTY_KEYWORDS = "";
     public static final String KEYWORDS = "Valid keywords";

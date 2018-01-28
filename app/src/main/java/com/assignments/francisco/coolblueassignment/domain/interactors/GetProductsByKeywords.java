@@ -5,7 +5,7 @@ import com.assignments.francisco.coolblueassignment.data.api.FindingApiClientImp
 import javax.inject.Inject;
 
 /**
- * Interactor responsable of retrieving products by keywords from data layer with or without filters.
+ * Interactor responsible of retrieving products by keywords from data layer with or without filters.
  *
  * @author Francisco Visintini
  */

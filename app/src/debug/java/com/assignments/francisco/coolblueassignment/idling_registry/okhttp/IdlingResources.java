@@ -12,8 +12,8 @@ import okhttp3.OkHttpClient;
  * @author Francisco Visintini
  */
 public abstract class IdlingResources {
-  public static void registerOkHttp(OkHttpClient client) {
-    IdlingRegistry.getInstance().register(OkHttp3IdlingResource.create(
-            "okhttp", client));
-  }
+    public static void registerOkHttp(OkHttpClient client) {
+        IdlingRegistry.getInstance().register(OkHttp3IdlingResource.create(
+                "okhttp", client));
+    }
 }
