@@ -31,8 +31,9 @@ ext {
     junitVersion = '4.12'
 
     // Android Testing Support Library's dependencies
-    supportLibraryTestVersion = '0.5'
+    supportLibraryTestVersion = '1.0.1'
 
     // UI Testing dependencies
     espressoVersion = '3.0.1'
+    okHttpIdlingResourceVersion = '1.0.0'
 }

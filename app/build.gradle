@@ -3,7 +3,9 @@ apply plugin: 'com.android.application'
 android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
-
+    testOptions {
+        animationsDisabled = true
+    }
     defaultConfig {
         applicationId "com.assignments.francisco.coolblueassignment"
         minSdkVersion rootProject.ext.minSdkVersion
@@ -11,6 +13,8 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+
     }
     buildTypes {
         release {
@@ -40,8 +44,8 @@ dependencies {
     implementation "com.qintong:insLoadingAnimation:$rootProject.ext.loadingAnimationVersion"
 
     // Unit Testing dependencies
-    testCompile "junit:junit:$rootProject.ext.junitVersion"
-    testCompile "org.mockito:mockito-core:$rootProject.ext.mockitoVersion"
+    testImplementation "junit:junit:$rootProject.ext.junitVersion"
+    testImplementation "org.mockito:mockito-core:$rootProject.ext.mockitoVersion"
 
     // Android Testing Support Library's dependencies
     androidTestImplementation "com.android.support:support-annotations:$rootProject.ext.supportLibraryVersion"
@@ -49,5 +53,9 @@ dependencies {
     androidTestImplementation "com.android.support.test:rules:$rootProject.ext.supportLibraryTestVersion"
 
     // UI Testing dependencies
-    testCompile "com.android.support.test.espresso:espresso-core:$rootProject.ext.espressoVersion"
+    debugImplementation "com.android.support.test.espresso.idling:idling-concurrent:$rootProject.ext.espressoVersion"
+    debugImplementation("com.jakewharton.espresso:okhttp3-idling-resource:$rootProject.ext.okHttpIdlingResourceVersion") {
+        exclude module: "support-annotations"
+    }
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.ext.espressoVersion"
 }
