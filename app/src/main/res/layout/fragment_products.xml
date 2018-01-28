@@ -96,12 +96,13 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginTop="10dp"
         android:divider="@drawable/list_divider"
         android:orientation="vertical"
         android:showDividers="middle"
-        app:layout_constraintTop_toBottomOf="@id/filter_view">
+        app:layout_constraintTop_toBottomOf="@id/filter_view"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <TextView
             android:id="@+id/showing_items_label"
@@ -116,8 +117,7 @@
             android:id="@+id/products_recycler"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone"
-            app:layout_constraintTop_toBottomOf="@id/showing_items_label" />
+            android:visibility="gone" />
     </LinearLayout>
 
     <android.support.constraint.ConstraintLayout
@@ -125,8 +125,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/loading_view"
-        app:layout_constraintStart_toStartOf="@id/loading_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.qintong.library.InsLoadingView
