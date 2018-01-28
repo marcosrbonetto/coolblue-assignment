@@ -50,6 +50,6 @@ public interface FindingApiClient {
     @GET("services/search/FindingService/v1/?SECURITY-APPNAME=Francisc-CoolBlue-PRD-a5d80d3bd-d45ab8cb" +
             "&SERVICE-VERSION=1.13.0&RESPONSE-DATA-FORMAT=XML&OPERATION-NAME=findItemsByKeywords")
     Call<ProductsResponse> getProductsByKeywords(@Query("GLOBAL-ID") String globalId, @Query("keywords") String keywords,
-            @Query("itemFilter.name") String minPriceLabel, @Query("itemFilter.value") String minPrice,
-            @Query("itemFilter.name") String maxPriceLabel, @Query("itemFilter.value") String maxPrice);
+            @Query("itemFilter(0).name") String minPriceLabel, @Query("itemFilter(0).value") String minPrice,
+            @Query("itemFilter(1).name") String maxPriceLabel, @Query("itemFilter(1).value") String maxPrice);
 }
