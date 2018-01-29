@@ -28,6 +28,9 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
  */
 @RunWith(AndroidJUnit4.class)
 @LargeTest
+//TODO This UI tests don't have the best approach. Correct way will be to intercept calls and return mocked product objects,
+// as to validate correct and well displayed info inside each item of the recycler view. Also we would need to mock server and
+// empty products responses.
 public class SearchProductsScreenTest {
 
     @Rule
